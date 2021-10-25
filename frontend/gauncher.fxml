@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="771.0" prefWidth="1209.0" style="-fx-background-color: white; -fx-alignment: top-center;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ImageView fitHeight="450.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@assets/img/logo.png" />
+         </image></ImageView>
+      <GridPane alignment="TOP_CENTER" prefHeight="377.0" prefWidth="943.0" style="-fx-alignment: center;">
+        <columnConstraints>
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+          <RowConstraints maxHeight="187.0" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="205.0" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
+          <RowConstraints maxHeight="248.0" minHeight="0.0" prefHeight="165.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <VBox.margin>
+            <Insets top="70.0" />
+         </VBox.margin>
+         <children>
+            <Text fill="#0077b6" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Jeux :">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
+               </font>
+            </Text>
+            <Text fill="#0077b6" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="Nombres de Joueurs :" GridPane.columnIndex="1">
+               <font>
+                  <Font name="Comic Sans MS" size="40.0" />
+               </font>
+            </Text>
+         </children>
+      </GridPane>
+   </children>
+</VBox>
