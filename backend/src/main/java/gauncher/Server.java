@@ -2,22 +2,27 @@ package gauncher;
 
 import static java.lang.String.format;
 
-import gauncher.channels.ChatChannel;
 import gauncher.handlers.CommandHandler;
 import gauncher.logging.Logger;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import javax.net.ServerSocketFactory;
 
 public class Server {
 
   private static final int SERVER_PORT = 8080;
-  public static ChatChannel chatChannel;
+
+  public static Map<String, ArrayList<Socket>> channels = new HashMap<>();
 
   public static void main(String[] args) {
-    chatChannel = new ChatChannel();
     Logger log = new Logger("ServerLogger");
+    channels.put("chat", new ArrayList<>());
+    channels.put("demineur", new ArrayList<>());
+
     log.info(format("Server starting at port %s...", SERVER_PORT));
     ServerSocket serverSocket = null;
     try {
