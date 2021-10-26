@@ -5,17 +5,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e42efe-cf2a-4f90-869a-27f098563d77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channels/Channel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/Command.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channels/Channel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler$Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channels/Channel.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/channels/Channel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/Command.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/EchoClientHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/LoginHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,7 +138,8 @@
       <option name="presentableId" value="Default" />
       <updated>1635151896555</updated>
       <workItem from="1635151897862" duration="8256000" />
-      <workItem from="1635162386590" duration="12581000" />
+      <workItem from="1635162386590" duration="19361000" />
+      <workItem from="1635228826808" duration="3183000" />
     </task>
     <servers />
   </component>

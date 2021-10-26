@@ -2,6 +2,7 @@ package gauncher;
 
 import static java.lang.String.format;
 
+import gauncher.channel.Channel;
 import gauncher.handlers.CommandHandler;
 import gauncher.logging.Logger;
 import java.io.IOException;
@@ -9,7 +10,9 @@ import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import javax.net.ServerSocketFactory;
 
 public class Server {
@@ -17,6 +20,15 @@ public class Server {
   private static final int SERVER_PORT = 8080;
 
   public static Map<String, ArrayList<Socket>> channels = new HashMap<>();
+  public static List<Channel> channelList =
+      List.of(new Channel("chat", -1, "simple chat"), new Channel("demineur", 4, ""));
+
+  public static Optional<Channel> getChannel(String channelName) {
+    return channelList.stream()
+        .filter(channel -> !channel.isFull())
+        .filter(channel -> channel.getName().equals(channelName))
+        .findFirst();
+  }
 
   public static void main(String[] args) {
     Logger log = new Logger("ServerLogger");
