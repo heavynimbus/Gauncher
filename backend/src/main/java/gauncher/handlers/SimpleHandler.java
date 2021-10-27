@@ -9,13 +9,9 @@ import java.net.Socket;
 
 public abstract class SimpleHandler extends Thread {
   protected Player player;
-  protected PrintWriter out;
-  protected BufferedReader in;
 
-  public SimpleHandler(Player player) throws IOException {
+  public SimpleHandler(Player player){
     this.player = player;
-    this.out = new PrintWriter(player.getSocket().getOutputStream(), true);
-    this.in = new BufferedReader(new InputStreamReader(player.getSocket().getInputStream()));
   }
 
   public SimpleHandler(Socket client) throws IOException {

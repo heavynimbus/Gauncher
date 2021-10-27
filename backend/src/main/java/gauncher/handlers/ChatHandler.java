@@ -6,8 +6,6 @@ import gauncher.Server;
 import gauncher.logging.Logger;
 import gauncher.player.Player;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Objects;
 
 public class ChatHandler extends SimpleHandler {
   private final Logger log;
@@ -19,56 +17,24 @@ public class ChatHandler extends SimpleHandler {
 
   @Override
   public void run() {
-    log.info(format("%s connected to the chat", this.player.getUsername()));
-    out.println("Welcome to chat !");
+    var joinedTheChatMessage = format("%s joined the chat", player.getUsername());
+    log.info(joinedTheChatMessage);
+    Server.getChannel("chat").ifPresent(c -> c.sendAll(joinedTheChatMessage));
+
     try {
       String line;
-      while ((line = in.readLine()) != null) {
-        if ("exit".equalsIgnoreCase(line)) {
-          out.println("Goodbye !");
-
-          Server.channels.get("chat").remove(this.player.getSocket());
+      while ((line = player.getReader().readLine()) != null) {
+        if ("QUIT".equalsIgnoreCase(line)) {
+          player.getPrinter().println("Goodbye !");
+          Server.getChannel("chat").ifPresent(c -> c.removePlayer(player));
+          Server.getChannel("chat")
+              .ifPresent(c -> c.sendAll(format("%s left the chat", player.getUsername())));
           break;
         }
-        String finalLine = line;
-        Server.getChannel("chat")
-            .ifPresent(
-                c -> {
-                  c.playerStream()
-                      .map(Player::getSocket)
-                      .map(
-                          socket -> {
-                            try {
-                              return new PrintWriter(socket.getOutputStream(), true);
-                            } catch (IOException e) {
-                              e.printStackTrace();
-                            }
-                            return null;
-                          })
-                      .filter(Objects::nonNull)
-                      .forEach(
-                          printer -> {
-                            printer.println(format("%s: %s", this.player.getUsername(), finalLine));
-                          });
-                });
-        log.info(format("Message from %s: %s", this.player.getUsername(), finalLine));
-        /*Server.channels.get("chat").stream()
-        .filter(socket -> !this.player.getSocket().equals(socket))
-        .map(
-            socket -> {
-              try {
-                return new PrintWriter(socket.getOutputStream(), true);
-              } catch (IOException e) {
-                e.printStackTrace();
-              }
-              return null;
-            })
-        .filter(Objects::nonNull)
-        .forEach(
-            printer -> {
-              printer.println(format("%s: %s", this.player.getUsername(), finalLine));
-              log.info(format("Message from %s: %s", this.player.getUsername(), finalLine));
-            });*/
+        String finalLine = format("%s: %s", this.player.getUsername(), line);
+        System.out.println(Server.getChannel("chat"));
+        Server.getChannel("chat").ifPresent(c -> c.sendAll(finalLine, this.player.getUsername()));
+        log.info(format("Message from %s: %s", this.player, line));
       }
     } catch (IOException e) {
       e.printStackTrace();

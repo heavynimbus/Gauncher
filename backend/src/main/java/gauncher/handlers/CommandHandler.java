@@ -43,11 +43,11 @@ public class CommandHandler extends SimpleHandler {
           chat.start();
           chat.join();
         } else {
-          out.println(format("Channel %s is full", channelName));
+          player.getPrinter().println(format("Channel %s is full", channelName));
           log.error(format("Channel %s is full", channelName));
         }
       } else {
-        out.println(format("Unknown channel %s", channelName));
+        player.getPrinter().println(format("Unknown channel %s", channelName));
         log.debug(format("Unknown channel, cannot enter to %s", channelName));
       }
     } catch (IOException | InterruptedException e) {
@@ -69,51 +69,51 @@ public class CommandHandler extends SimpleHandler {
 
   @Override
   public void run() {
-    try {
-      String line = null;
-      while (true) {
-        try {
-          if ((line = this.in.readLine()) == null) break;
-        } catch (SocketException ignored) {
-          log.error(format("%s has been disconnected", this.player.getUsername()));
-        }
-        log.info(format("Received from %s: %s", this.player.getUsername(), line));
-        if (checkCommand(line, Command.LIST)) {
-          StringBuilder channels = new StringBuilder();
-          out.println(
-              Server.channelList.stream().map(Channel::toString).collect(Collectors.joining("\n")));
-        } else if (checkCommand(line, Command.ENTER)) {
-          var channel = getArgument(line, Command.ENTER);
-          channel.ifPresentOrElse(
-              this::enterInChannel,
-              () -> {
-                log.error("Empty channel");
-                out.println("ENTER command need the channel name parameter");
-              });
-        } else if (checkCommand(line, Command.LOGIN)) {
-          var username = getArgument(line, Command.LOGIN);
-          log.info(
-              format(
-                  "%s change his username to %s",
-                  this.player.getUsername(), username.orElse("Anonymous")));
-          username.ifPresent(this.player::setUsername);
-          out.println(format("New username: %s", this.player.getUsername()));
-        } else if (checkCommand(line, Command.QUIT)) {
-          System.out.println(in.ready());
-          in.close();
-          out.close();
-          log.info("Disconnection from %s");
-          this.player.getSocket().close();
-        } else {
-          out.println("Bad command (LOGIN, LIST, ENTER, QUIT)");
-          log.debug(
-              format(
-                  "Unknown command received from %s: %s",
-                  this.player.getSocket().getRemoteSocketAddress(), line));
-        }
+    String line = null;
+    
+    while (true) {
+      try {
+        if ((line = player.getReader().readLine()) == null) break;
+      } catch (SocketException ignored) {
+        log.error(format("%s has been disconnected", this.player.getUsername()));
+      } catch (IOException ignored) {
+        return;
       }
-    } catch (IOException e) {
-      e.printStackTrace();
+      log.info(format("Received from %s: %s", this.player.getUsername(), line));
+      if (checkCommand(line, Command.LIST)) {
+        player
+            .getPrinter()
+            .println(
+                Server.channelList.stream()
+                    .map(Channel::toString)
+                    .collect(Collectors.joining("\n")));
+      } else if (checkCommand(line, Command.ENTER)) {
+        var channel = getArgument(line, Command.ENTER);
+        channel.ifPresentOrElse(
+            this::enterInChannel,
+            () -> {
+              log.error("Empty channel");
+              player
+                  .getPrinter()
+                  .println("Invalid command - ENTER need the channel name parameter");
+            });
+      } else if (checkCommand(line, Command.LOGIN)) {
+        var username = getArgument(line, Command.LOGIN);
+        username.ifPresentOrElse(
+            this.player::setUsername,
+            () -> {
+              var message =
+                  format("Invalid command from %s - LOGIN need a username parameter", this.player);
+              log.error(message);
+              player.getPrinter().println(message);
+            });
+      } else if (checkCommand(line, Command.QUIT)) {
+        player.getPrinter().println("Disconnection");
+        player.disconnect();
+      } else {
+        player.getPrinter().println("Bad command (LOGIN, LIST, ENTER, QUIT)");
+        log.error(format("Unknown command received from %s: %s", this.player, line));
+      }
     }
   }
 }

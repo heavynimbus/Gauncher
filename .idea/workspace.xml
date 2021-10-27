@@ -5,21 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e42efe-cf2a-4f90-869a-27f098563d77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Minesweeper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channels/Channel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/Command.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channels/Channel.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/channels/Channel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channels/Channel.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/Command.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/player/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +73,33 @@
       <recent name="C:\Users\hugow\Documents\Gauncher\frontend" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Server">
+    <configuration name="ChatHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gauncher.handlers.ChatHandler" />
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gauncher.handlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Player" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gauncher.player.Player" />
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gauncher.player.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
@@ -126,6 +150,8 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.ChatHandler" />
+        <item itemvalue="Application.Player" />
       </list>
     </recent_temporary>
   </component>
@@ -140,6 +166,7 @@
       <workItem from="1635151897862" duration="8256000" />
       <workItem from="1635162386590" duration="19361000" />
       <workItem from="1635228826808" duration="3183000" />
+      <workItem from="1635255268340" duration="14275000" />
     </task>
     <servers />
   </component>
