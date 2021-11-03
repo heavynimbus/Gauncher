@@ -27,31 +27,22 @@ public class CommandHandler extends SimpleHandler {
   }
 
   private void enterInChannel(String channelName) {
-    try {
-      if (Server.channelList.stream().map(Channel::getName).anyMatch(channelName::equals)) {
-        var notFullChannels =
-            Server.channelList.stream()
-                .filter(channel -> !channel.isFull())
-                .filter(channel -> channel.getName().equalsIgnoreCase(channelName))
-                .collect(Collectors.toList());
-        Server.channelList.stream()
-            .filter(channel -> !channel.isFull())
-            .forEach(System.out::println);
-        if (!notFullChannels.isEmpty()) {
-          notFullChannels.get(0).addPlayer(player);
-          ChatHandler chat = new ChatHandler(this.player);
-          chat.start();
-          chat.join();
-        } else {
-          player.getPrinter().println(format("Channel %s is full", channelName));
-          log.error(format("Channel %s is full", channelName));
-        }
+    if (Server.channelList.stream().map(Channel::getName).anyMatch(channelName::equals)) {
+      var notFullChannels =
+          Server.channelList.stream()
+              .filter(channel -> !channel.isFull())
+              .filter(channel -> channel.getName().equalsIgnoreCase(channelName))
+              .collect(Collectors.toList());
+      Server.channelList.stream().filter(channel -> !channel.isFull()).forEach(System.out::println);
+      if (!notFullChannels.isEmpty()) {
+        notFullChannels.get(0).addPlayer(player);
       } else {
-        player.getPrinter().println(format("Unknown channel %s", channelName));
-        log.debug(format("Unknown channel, cannot enter to %s", channelName));
+        player.getPrinter().println(format("Channel %s is full", channelName));
+        log.error(format("Channel %s is full", channelName));
       }
-    } catch (IOException | InterruptedException e) {
-      e.printStackTrace();
+    } else {
+      player.getPrinter().println(format("Unknown channel %s", channelName));
+      log.debug(format("Unknown channel, cannot enter to %s", channelName));
     }
   }
 
@@ -70,12 +61,13 @@ public class CommandHandler extends SimpleHandler {
   @Override
   public void run() {
     String line = null;
-    
+
     while (true) {
       try {
         if ((line = player.getReader().readLine()) == null) break;
       } catch (SocketException ignored) {
         log.error(format("%s has been disconnected", this.player.getUsername()));
+        return;
       } catch (IOException ignored) {
         return;
       }

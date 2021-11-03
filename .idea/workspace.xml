@@ -5,19 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e42efe-cf2a-4f90-869a-27f098563d77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Minesweeper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chat/Chat.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/ChessGame.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/exception/InvalidMoveException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/exception/PieceNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Bishop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/King.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Knight.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Pawn.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Piece.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/PieceColor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Queen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Rook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Minesweeper.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channels/Channel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/Channel.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/Channel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/Minesweeper.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/player/Player.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,13 +55,17 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectId" id="1zzXTHWdo5PUCk4JZlOf61nTQTK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -115,15 +128,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -166,12 +177,17 @@
       <workItem from="1635151897862" duration="8256000" />
       <workItem from="1635162386590" duration="19361000" />
       <workItem from="1635228826808" duration="3183000" />
-      <workItem from="1635255268340" duration="14275000" />
+      <workItem from="1635255268340" duration="15965000" />
+      <workItem from="1635848665389" duration="27000" />
+      <workItem from="1635926875395" duration="3879000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

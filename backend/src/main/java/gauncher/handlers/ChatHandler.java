@@ -6,11 +6,12 @@ import gauncher.Server;
 import gauncher.logging.Logger;
 import gauncher.player.Player;
 import java.io.IOException;
+import java.net.SocketException;
 
 public class ChatHandler extends SimpleHandler {
   private final Logger log;
 
-  public ChatHandler(Player player) throws IOException {
+  public ChatHandler(Player player) {
     super(player);
     this.log = new Logger("ChatHandler");
   }
@@ -32,10 +33,11 @@ public class ChatHandler extends SimpleHandler {
           break;
         }
         String finalLine = format("%s: %s", this.player.getUsername(), line);
-        System.out.println(Server.getChannel("chat"));
         Server.getChannel("chat").ifPresent(c -> c.sendAll(finalLine, this.player.getUsername()));
         log.info(format("Message from %s: %s", this.player, line));
       }
+    }  catch (SocketException e){
+      player.disconnect();
     } catch (IOException e) {
       e.printStackTrace();
     }

@@ -3,6 +3,7 @@ package gauncher;
 import static java.lang.String.format;
 
 import gauncher.channel.Channel;
+import gauncher.channel.chat.Chat;
 import gauncher.handlers.CommandHandler;
 import gauncher.logging.Logger;
 import java.io.IOException;
@@ -21,7 +22,7 @@ public class Server {
 
   public static Map<String, ArrayList<Socket>> channels = new HashMap<>();
   public static List<Channel> channelList =
-      List.of(new Channel("chat", -1, "simple chat"), new Channel("demineur", 4, ""));
+      List.of(new Chat());
 
   public static Optional<Channel> getChannel(String channelName) {
     return channelList.stream()
