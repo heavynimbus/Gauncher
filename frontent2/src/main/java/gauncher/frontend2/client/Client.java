@@ -11,14 +11,30 @@ public class Client {
   private Socket socket;
   private PrintWriter printWriter;
   private BufferedReader reader;
+  private String pseudo;
 
-  public Client(String hostname) throws IOException {
-    this.setSocket(new Socket(hostname, SERVER_IP));
+  public Client() {}
+
+  public Client bindSocket(Socket socket) throws IOException {
+    this.socket = socket;
+    this.printWriter = new PrintWriter(socket.getOutputStream(), true);
+    this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    return this;
   }
 
-  public void setSocket(Socket socket) throws IOException {
-    this.socket = socket;
-    this.printWriter = new PrintWriter(socket.getOutputStream());
-    this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+  public void setPseudo(String pseudo){
+    this.pseudo = pseudo;
+  }
+
+  public String getPseudo(){
+    return this.pseudo;
+  }
+
+  public String readLine() throws IOException {
+    return this.reader.readLine();
+  }
+
+  public void println(Object object){
+    this.printWriter.println(object);
   }
 }

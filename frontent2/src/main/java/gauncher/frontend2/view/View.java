@@ -10,7 +10,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 
 public abstract class View extends Scene {
-  private static final FXMLLoader FXML_LOADER = new FXMLLoader();
 
   protected View(String FXML_FILE_PATH) throws UnprocessableViewException {
     super(
@@ -22,7 +21,7 @@ public abstract class View extends Scene {
 
   protected static Optional<Parent> loadFXML(String filePath) {
     try {
-      return Optional.of(FXML_LOADER.load(View.class.getResourceAsStream(filePath)));
+      return Optional.of(new FXMLLoader().load(View.class.getResourceAsStream(filePath)));
     } catch (IOException e) {
       e.printStackTrace();
       return Optional.empty();

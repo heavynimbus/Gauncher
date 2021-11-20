@@ -52,7 +52,6 @@ public class Player {
     while (username.charAt(username.length() - 1) == ' ') {
       username = username.substring(0, username.length() - 1);
     }
-    printer.println(format("New username: %s", username));
     log.info(format("%s change his username to '%s'", this, username));
     this.username = username;
   }

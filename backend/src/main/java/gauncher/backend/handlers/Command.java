@@ -5,6 +5,7 @@ import java.util.stream.Stream;
 
 public enum Command {
   HELP,
+  USERNAME,
   LOGIN,
   LIST,
   ENTER,

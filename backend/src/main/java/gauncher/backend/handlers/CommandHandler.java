@@ -90,7 +90,9 @@ public class CommandHandler extends SimpleHandler {
         return;
       }
       log.info(format("Received from %s: %s", player, line));
-      if (checkCommand(line, Command.LIST)) {
+      if (checkCommand(line, Command.USERNAME)) {
+        this.player.getPrinter().println(this.player.getUsername());
+      } else if (checkCommand(line, Command.LIST)) {
         Channels.channelList.forEach(channel -> player.getPrinter().println(channel));
       } else if (checkCommand(line, Command.ENTER)) {
         var channel = getArgument(line, Command.ENTER);
@@ -106,10 +108,11 @@ public class CommandHandler extends SimpleHandler {
         var username = getArgument(line, Command.LOGIN);
         username.ifPresentOrElse(
             uName -> {
-              if (Channels.checkUsername(uName)) {
+              if (Channels.checkUsername(uName) || this.player.getUsername().equals(uName)) {
+                player.getPrinter().println(format("OK %s", uName));
                 player.setUsername(uName);
               } else {
-                player.getPrinter().println(format("%s already used", uName));
+                player.getPrinter().println(format("KO %s already used", uName));
                 log.error("Invalid command from %s - Username already used");
               }
             },
