@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gauncher.frontend2.controller.ConnectionController">
+   <children>
+      <Button fx:id="submitButton" layoutX="131.0" layoutY="214.0" mnemonicParsing="false" onAction="#tryToConnect" text="Try to connect" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="214.0" />
+      <TextField fx:id="serverIP" layoutX="88.0" layoutY="165.0" promptText="127.0.0.1" text="localhost" AnchorPane.bottomAnchor="96.0" AnchorPane.leftAnchor="88.0" AnchorPane.rightAnchor="88.0" AnchorPane.topAnchor="165.0" />
+      <Label layoutX="156.0" layoutY="123.0" text="SERVER IP :" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="155.0" AnchorPane.rightAnchor="155.0" AnchorPane.topAnchor="123.0" />
+      <Label fx:id="errorLabel" layoutX="125.0" layoutY="259.0" style="-fx-font-weight: bold; -fx-text-fill: red;" text="Connection failed" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="125.0" AnchorPane.rightAnchor="125.0" AnchorPane.topAnchor="259.0" />
+      <Label layoutX="103.0" layoutY="36.0" text="GAUNCHER" AnchorPane.bottomAnchor="207.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="36.0">
+         <font>
+            <Font name="Arial Nova Cond Light Italic" size="46.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
