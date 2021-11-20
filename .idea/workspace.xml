@@ -5,19 +5,69 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e42efe-cf2a-4f90-869a-27f098563d77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Minesweeper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/ChannelStatus.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/Channels.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/CommandChannel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/ChatHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/ChessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/SimpleHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/SystemInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/client/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ConnectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/exception/UnprocessableViewException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/logging/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/ConnectionView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/connection_view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/login-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channels/Channel.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/player/Player.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/player/Player.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/backend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/Channel.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/Channel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chat/Chat.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chat/ChatChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/ChessGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/ChessChannel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/exception/InvalidMoveException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/exception/InvalidMoveException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/exception/PieceNotFoundException.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/exception/PieceNotFoundException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Bishop.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/Bishop.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/King.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/Knight.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Pawn.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/Pawn.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/Piece.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/PieceColor.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/PieceColor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/Queen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/channel/chess/pawn/Rook.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/channel/chess/pawn/Rook.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/ChatHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/Command.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/CommandHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/handlers/SimpleHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/logging/Logger.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/logging/Logger.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/player/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/Server.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/Channel.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chat/Chat.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/ChessGame.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/Bishop.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/King.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/Knight.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/Pawn.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/Piece.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/PieceColor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/Queen.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/channel/chess/pawn/Rook.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/ChatHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/Command.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/CommandHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/handlers/SimpleHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/logging/Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/player/Player.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,13 +96,17 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
+  <component name="PhpDebugGeneral" listening_started="true" />
   <component name="ProjectId" id="1zzXTHWdo5PUCk4JZlOf61nTQTK" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
@@ -60,39 +114,44 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="go.import.settings.migrated" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/frontent2/src/main/resources/fxml" />
+    <property name="nodejs_package_manager_path" value="npm" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="restartRequiresConfirmation" value="false" />
-    <property name="settings.editor.selected.configurable" value="configurable.group.language" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\hugow\Documents\Gauncher\frontent2\src\main\resources\fxml" />
+      <recent name="C:\Users\hugow\Documents\Gauncher\backend\src\main\java" />
       <recent name="C:\Users\hugow\Documents\Gauncher\frontend" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\hugow\Documents\Gauncher\frontent2\src\main\java\gauncher\frontend" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="gauncher.frontend.logging" />
+      <recent name="gauncher.logging" />
+    </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
-    <configuration name="ChatHandler" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gauncher.handlers.ChatHandler" />
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gauncher.handlers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
+  <component name="RunManager" selected="Application.App">
+    <configuration name="2é" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
+      <module name="frontent2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Player" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gauncher.player.Player" />
-      <module name="backend" />
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
+      <module name="frontent2" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="gauncher.player.*" />
+          <option name="PATTERN" value="gauncher.frontend2.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -103,7 +162,7 @@
     <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="11" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="gauncher.Server" />
+      <option name="MAIN_CLASS_NAME" value="gauncher.backend.Server" />
       <module name="backend" />
       <extension name="coverage">
         <pattern>
@@ -115,15 +174,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -147,11 +204,15 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Application.2é" />
+      <item itemvalue="Application.Server" />
+      <item itemvalue="Application.App" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.App" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.ChatHandler" />
-        <item itemvalue="Application.Player" />
       </list>
     </recent_temporary>
   </component>
@@ -166,12 +227,24 @@
       <workItem from="1635151897862" duration="8256000" />
       <workItem from="1635162386590" duration="19361000" />
       <workItem from="1635228826808" duration="3183000" />
-      <workItem from="1635255268340" duration="14275000" />
+      <workItem from="1635255268340" duration="15965000" />
+      <workItem from="1635848665389" duration="27000" />
+      <workItem from="1635926875395" duration="3879000" />
+      <workItem from="1635955532571" duration="499000" />
+      <workItem from="1635956062074" duration="709000" />
+      <workItem from="1637355414370" duration="286000" />
+      <workItem from="1637355716698" duration="7451000" />
+      <workItem from="1637363252289" duration="373000" />
+      <workItem from="1637363658479" duration="90000" />
+      <workItem from="1637363787081" duration="13751000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
