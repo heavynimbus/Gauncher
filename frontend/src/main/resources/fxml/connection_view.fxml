@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gauncher.frontend.controller.ConnectionController">
+   <children>
+      <Button fx:id="submitButton" layoutX="131.0" layoutY="214.0" mnemonicParsing="false" onAction="#tryToConnect" text="Try to connect" AnchorPane.bottomAnchor="47.0" AnchorPane.leftAnchor="131.0" AnchorPane.rightAnchor="131.0" AnchorPane.topAnchor="214.0" />
+      <Label layoutX="162.0" layoutY="123.0" text="SERVER IP :" AnchorPane.bottomAnchor="150.0" AnchorPane.leftAnchor="162.0" AnchorPane.rightAnchor="148.0" AnchorPane.topAnchor="123.0" />
+      <Label fx:id="errorLabel" alignment="CENTER" layoutX="125.0" layoutY="259.0" style="-fx-font-weight: bold; -fx-text-fill: red;" text="Connection failed" textAlignment="CENTER" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="259.0" />
+      <Label layoutX="103.0" layoutY="36.0" text="GAUNCHER" AnchorPane.bottomAnchor="207.0" AnchorPane.leftAnchor="103.0" AnchorPane.rightAnchor="102.0" AnchorPane.topAnchor="36.0">
+         <font>
+            <Font name="Arial Nova Cond Light Italic" size="46.0" />
+         </font>
+      </Label>
+      <TextField fx:id="ipField2" layoutX="112.0" layoutY="156.0" onKeyPressed="#inputValues" prefHeight="40.0" prefWidth="80.0" promptText="0" style="-fx-alignment: center;" text="0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="110.0" AnchorPane.rightAnchor="210.0" AnchorPane.topAnchor="156.0" />
+      <TextField fx:id="ipField3" layoutX="217.0" layoutY="156.0" onKeyPressed="#inputValues" promptText="0" style="-fx-alignment: center;" text="0" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="210.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="156.0" />
+      <TextField fx:id="ipField4" layoutX="315.0" layoutY="156.0" onKeyPressed="#inputValues" prefHeight="40.0" prefWidth="80.0" promptText="1" style="-fx-alignment: center;" text="1" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="310.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="156.0" />
+      <TextField fx:id="ipField1" layoutX="14.0" layoutY="156.0" onKeyPressed="#inputValues" prefHeight="40.0" prefWidth="80.0" promptText="127" style="-fx-alignment: center;" text="127" AnchorPane.bottomAnchor="104.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="310.0" AnchorPane.topAnchor="156.0" />
+      <Text layoutX="95.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="." wrappingWidth="16.90478515625" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="90.0" AnchorPane.rightAnchor="110.0" AnchorPane.topAnchor="136.0">
+         <font>
+            <Font name="System Bold" size="55.0" />
+         </font>
+      </Text>
+      <Text layoutX="192.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="." wrappingWidth="16.90478515625" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="190.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="136.0">
+         <font>
+            <Font name="System Bold" size="55.0" />
+         </font>
+      </Text>
+      <Text layoutX="290.0" layoutY="196.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-text-alignment: center;" text="." wrappingWidth="16.90478515625" AnchorPane.bottomAnchor="83.0" AnchorPane.leftAnchor="290.0" AnchorPane.rightAnchor="90.0" AnchorPane.topAnchor="136.0">
+         <font>
+            <Font name="System Bold" size="55.0" />
+         </font>
+      </Text>
+      <ProgressIndicator fx:id="progressIndicator" layoutX="298.0" layoutY="214.0" prefHeight="66.0" prefWidth="69.0" progress="0.0" />
+   </children>
+</AnchorPane>

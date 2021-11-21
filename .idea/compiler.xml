@@ -8,13 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="backend" />
         <module name="frontent2" />
-        <module name="frontend2" />
         <module name="frontend" />
         <module name="frontendTest" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="backend2" target="11" />
+      <module name="frontend2" target="11" />
     </bytecodeTargetLevel>
   </component>
 </project>

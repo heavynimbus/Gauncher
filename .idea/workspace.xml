@@ -5,11 +5,71 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e42efe-cf2a-4f90-869a-27f098563d77" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/App.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/SystemInfo.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/client/Client.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/controller/ChatController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/controller/ConnectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/controller/LoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/exception/UnprocessableViewException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/logging/Logger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/task/ConnectionTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/view/ChatView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/view/ConnectionView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/view/LoginView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/gauncher/frontend/view/View.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/java/module-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/fxml/chat.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/fxml/connection_view.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/src/main/resources/fxml/login_view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ChatController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/chat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/fxml/chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/fxml/chat.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ChatController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/target/frontend-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/SystemInfo.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/client/Client.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ChatController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ConnectionController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/LoginController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/exception/UnprocessableViewException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/logging/Logger.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/task/ConnectionTask.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/ChatView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/ConnectionView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/LoginView.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/View.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/module-info.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/chat.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/connection_view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/login_view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/fxml/chat.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/fxml/connection_view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/fxml/login_view.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/App.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/SystemInfo.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/client/Client.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ChatController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ConnectionController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/LoginController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/task/ConnectionTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/exception/UnprocessableViewException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/logging/Logger.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/task/ConnectionTask.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/view/ChatView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/view/ConnectionView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/view/LoginView.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/view/View.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/module-info.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/frontend2-1.0-SNAPSHOT.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/maven-archiver/pom.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,36 +140,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.App">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
-      <module name="Gauncher" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$" />
-      <directory value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
-    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
-      <module name="Gauncher" />
-      <working_directory value="$PROJECT_DIR$" />
-      <go_parameters value="-i" />
-      <framework value="gotest" />
-      <kind value="DIRECTORY" />
-      <directory value="$PROJECT_DIR$" />
-      <filePath value="$PROJECT_DIR$" />
-      <method v="2" />
-    </configuration>
     <configuration name="2é" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
       <module name="frontent2" />
@@ -118,8 +148,10 @@
       </method>
     </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
-      <module name="frontend2" />
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="gauncher.frontend.App" />
+      <module name="frontend" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="gauncher.frontend2.*" />
@@ -144,6 +176,38 @@
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GoApplicationRunConfiguration" factoryName="Go Application">
+      <module name="Gauncher" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <kind value="FILE" />
+      <filePath value="$PROJECT_DIR$" />
+      <directory value="$PROJECT_DIR$" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="GoTestRunConfiguration" factoryName="Go Test">
+      <module name="Gauncher" />
+      <working_directory value="$PROJECT_DIR$" />
+      <go_parameters value="-i" />
+      <framework value="gotest" />
+      <kind value="DIRECTORY" />
+      <directory value="$PROJECT_DIR$" />
+      <filePath value="$PROJECT_DIR$" />
+      <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Application.2é" />
