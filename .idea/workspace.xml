@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e42efe-cf2a-4f90-869a-27f098563d77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/ChatView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gauncher.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/module-info.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ConnectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ConnectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ConnectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ConnectionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/LoginController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/module-info.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ChatController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ChatController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/fxml/chat.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/fxml/chat.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ChatController.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ChatController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -190,6 +185,15 @@
     <option name="version" value="3" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">

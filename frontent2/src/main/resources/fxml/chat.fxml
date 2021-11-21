@@ -73,7 +73,7 @@
                         <Insets left="10.0" top="30.0" />
                      </HBox.margin>
                      <children>
-                        <Label fx:id="usernameLabel" text="LAMORILLE Léo" textFill="#89c2d9">
+                        <Label fx:id="usernameLabel" textFill="#89c2d9">
                            <font>
                               <Font name="Comic Sans MS" size="30.0" />
                            </font>

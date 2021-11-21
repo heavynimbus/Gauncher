@@ -53,10 +53,12 @@ public class ChatController implements Initializable {
     private ListView<?> userList;
 
     @FXML
-    private Label usernameLabel;
+    public Label usernameLabel;
+
+    public SimpleStringProperty usernameLabelValue;
 
     @FXML
-    void sendButtonAction(ActionEvent event) {
+    void sendButtonAction() {
         App.client.println(messageBoxValue.get());
         messageBoxValue.set("");
     }
@@ -71,6 +73,8 @@ public class ChatController implements Initializable {
             this.messages.textProperty().bind(messageValue);
             this.messageBoxValue = new SimpleStringProperty("");
             this.messageBox.textProperty().bind(messageBoxValue);
+            usernameLabelValue = new SimpleStringProperty(App.client.getPseudo());
+            usernameLabel.textProperty().bind(usernameLabelValue);
             new Thread(() -> {
                 try {
                     while (true) {
@@ -100,6 +104,11 @@ public class ChatController implements Initializable {
         } else if (keyEvent.getText() != null) {
             messageBoxValue.set(value + keyEvent.getText());
             messageBox.positionCaret(messageBoxValue.get().length());
+        }
+
+        if (code.equals(KeyCode.ENTER) && keyEvent.getText() != null) {
+            App.client.println(value);
+            messageBoxValue.set("");
         }
     }
 }
