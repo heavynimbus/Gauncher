@@ -6,6 +6,7 @@ import gauncher.frontend2.App;
 import gauncher.frontend2.task.ConnectionTask;
 import gauncher.frontend2.exception.UnprocessableViewException;
 import gauncher.frontend2.logging.Logger;
+import gauncher.frontend2.view.ChatView;
 import gauncher.frontend2.view.LoginView;
 import java.net.URL;
 import java.util.List;
@@ -98,7 +99,8 @@ public class ConnectionController implements Initializable {
           progressIndicator.setVisible(false);
           try {
             var loginView = new LoginView();
-            App.setCurrentScene(loginView);
+            var chatView = new ChatView();
+            App.setCurrentScene(chatView);
           } catch (UnprocessableViewException ignored) {
           }
         });

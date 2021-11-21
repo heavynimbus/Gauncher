@@ -5,30 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="56e42efe-cf2a-4f90-869a-27f098563d77" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/LoginController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/task/ConnectionTask.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/LoginView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/ChatView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/Command.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/Command.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/CommandHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/handlers/CommandHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/gauncher/backend/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/backend-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/backend-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/backend/handlers/Command.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/backend/handlers/Command.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/classes/gauncher/backend/handlers/CommandHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/gauncher/backend/handlers/CommandHandler.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/frontend-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/target/frontend-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/target/maven-archiver/pom.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/client/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gauncher.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/backend/target/classes/module-info.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ConnectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/controller/ConnectionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/gauncher/frontend2/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/connection_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/connection_view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/login-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/resources/fxml/login_view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/fxml/connection_view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/fxml/connection_view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/client/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/client/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/src/main/java/module-info.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ConnectionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/ConnectionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/view/View.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/view/View.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/gauncher/frontend2/controller/LoginController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontent2/target/classes/module-info.class" beforeDir="false" afterPath="$PROJECT_DIR$/frontent2/target/classes/module-info.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -80,7 +66,6 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="restartRequiresConfirmation" value="false" />
     <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.runner" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -99,42 +84,7 @@
       <recent name="gauncher.logging" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Server">
-    <configuration name="2é" type="Application" factoryName="Application">
-      <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
-      <module name="frontent2" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
-      <module name="frontent2" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gauncher.frontend2.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="11" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
-      <option name="MAIN_CLASS_NAME" value="gauncher.backend.Server" />
-      <module name="backend" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="gauncher.handlers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.App">
     <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
@@ -165,6 +115,41 @@
       <filePath value="$PROJECT_DIR$" />
       <method v="2" />
     </configuration>
+    <configuration name="2é" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
+      <module name="frontent2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="gauncher.frontend2.App" />
+      <module name="frontend2" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gauncher.frontend2.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Server" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="11" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="MAIN_CLASS_NAME" value="gauncher.backend.Server" />
+      <module name="backend" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="gauncher.handlers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.2é" />
       <item itemvalue="Application.Server" />
@@ -172,8 +157,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Server" />
         <item itemvalue="Application.App" />
+        <item itemvalue="Application.Server" />
       </list>
     </recent_temporary>
   </component>
@@ -204,8 +189,21 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint type="java-exception">
+          <properties class="java.lang.ClassNotFoundException" package="java.lang" />
+          <option name="timeStamp" value="1" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
