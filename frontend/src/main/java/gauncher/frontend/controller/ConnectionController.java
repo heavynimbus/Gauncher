@@ -3,10 +3,10 @@ package gauncher.frontend.controller;
 import static java.lang.String.format;
 
 import gauncher.frontend.App;
-import gauncher.frontend.task.ConnectionTask;
 import gauncher.frontend.exception.UnprocessableViewException;
 import gauncher.frontend.logging.Logger;
-import gauncher.frontend.view.ChatView;
+import gauncher.frontend.task.ConnectionTask;
+import gauncher.frontend.util.TextParser;
 import gauncher.frontend.view.LoginView;
 import java.net.URL;
 import java.util.List;
@@ -98,9 +98,7 @@ public class ConnectionController implements Initializable {
           LOG.info(format("Connection with %s succeeded", ipAddr));
           progressIndicator.setVisible(false);
           try {
-            var loginView = new LoginView();
-            var chatView = new ChatView();
-            App.setCurrentScene(chatView);
+            App.setCurrentScene(new LoginView());
           } catch (UnprocessableViewException ignored) {
           }
         });
@@ -142,54 +140,34 @@ public class ConnectionController implements Initializable {
   public void inputValues(KeyEvent event) {
     var source = (TextField) event.getSource();
     var currentId = Integer.parseInt(source.getId().replace("ipField", ""));
-    var code = event.getCode();
-    if (code.isDigitKey()) {
-      var value = getIpFieldValueById(currentId).orElseThrow();
-      if (value.get().length() > 3) value.set(event.getText());
-      else {
-        try {
-          int toAdd = Integer.parseInt(event.getText());
-          var length = value.get().length();
-          System.out.println("length = " + length);
-          if (length >= 3) value.set("");
-          value.set(value.get() + toAdd);
-        } catch (NumberFormatException ignored) {
-        }
-        if (value.get().length() >= 3)
-          getIpFieldById(currentId + 1).ifPresent(this::getFocusAndSetCursor);
-      }
-    } else if (code.equals(KeyCode.BACK_SPACE)) {
-
-      getIpFieldValueById(currentId)
-          .ifPresent(
-              value -> {
-                if (value.get().isBlank())
-                  getIpFieldById(currentId - 1)
-                      .ifPresentOrElse(
-                          this::getFocusAndSetCursor, () -> this.getFocusAndSetCursor(ipField1));
-                else {
-                  value.set(value.get().substring(0, value.get().length() - 1));
-                }
-              });
-    } else if (code.equals(KeyCode.TAB)) {
-      getIpFieldById(currentId + 1)
-          .ifPresentOrElse(this::getFocusAndSetCursor, () -> this.getFocusAndSetCursor(ipField1));
-    } else if (code.equals(KeyCode.ENTER)) {
-      submitButton.requestFocus();
-    }
     getIpFieldValueById(currentId)
         .ifPresent(
-            value -> {
-              var intValue = Integer.parseInt(value.get());
-              if (intValue < 0 || intValue > 255) {
-
-                source.setStyle(
-                    source.getStyle() + ";-fx-border-color: red ; -fx-border-width: 2px ;");
-              } else {
-                source.setStyle(
-                    source.getStyle() + ";-fx-border-color: green ; -fx-border-width: 2px ;");
-              }
-            });
+            value ->
+                TextParser.getDefaultInstance(value, source)
+                    .addFilter(
+                        e -> { // Only accepts numbers
+                          try {
+                            Integer.parseInt(e.getText());
+                            return true;
+                          } catch (NumberFormatException ignored) {
+                            return false;
+                          }
+                        })
+                    .addAction( // request focus on last field
+                        (e, stringProperty) -> {
+                          if (e.getCode().equals(KeyCode.BACK_SPACE)
+                              && stringProperty.get().length() == 0)
+                            getIpFieldById(currentId - 1)
+                                .ifPresentOrElse(TextField::requestFocus, ipField1::requestFocus);
+                        })
+                    .addEndAction( // request focus on next field
+                        (input, stringProperty) -> {
+                          if (stringProperty.get().length() >= 3)
+                            getIpFieldById(currentId + 1)
+                                .ifPresentOrElse(
+                                    TextField::requestFocus, submitButton::requestFocus);
+                        })
+                    .inputValue(event));
   }
 
   private void showErrorLabel(String message) {

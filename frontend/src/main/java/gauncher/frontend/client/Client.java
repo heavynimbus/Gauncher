@@ -5,13 +5,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
+import javafx.beans.property.SimpleStringProperty;
 
 public class Client {
   private static final int SERVER_IP = 8080;
   private Socket socket;
   private PrintWriter printWriter;
   private BufferedReader reader;
-  private String pseudo;
+  private SimpleStringProperty pseudo;
 
   public Client() {}
 
@@ -19,22 +20,24 @@ public class Client {
     this.socket = socket;
     this.printWriter = new PrintWriter(socket.getOutputStream(), true);
     this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    this.pseudo = new SimpleStringProperty();
     return this;
   }
 
-  public void setPseudo(String pseudo){
-    this.pseudo = pseudo;
+  public void setPseudo(String pseudo) {
+    this.pseudo.set(pseudo);
   }
 
-  public String getPseudo(){
+  public SimpleStringProperty getPseudo() {
     return this.pseudo;
   }
 
   public String readLine() throws IOException {
+
     return this.reader.readLine();
   }
 
-  public void println(Object object){
+  public void println(Object object) {
     this.printWriter.println(object);
   }
 }

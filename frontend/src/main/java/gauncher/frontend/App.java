@@ -17,7 +17,9 @@ public class App extends Application {
   public static void setCurrentScene(Scene scene) {
     currentStage.setScene(scene);
   }
-
+  public static boolean isShowing(){
+    return currentStage.isShowing();
+  }
   @Override
   public void start(Stage stage) {
     App.currentStage = stage;
