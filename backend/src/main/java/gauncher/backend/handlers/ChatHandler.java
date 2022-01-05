@@ -22,6 +22,7 @@ public class ChatHandler extends SimpleHandler {
   public void run() {
     var joinedTheChatMessage = format("%s joined the chat", player.getUsername());
     var chat = Channels.get(this.channelId);
+    player.getPrinter().println(format("Online Users:%d", chat.playerStream().count()));
     log.info(joinedTheChatMessage);
     chat.sendAll(joinedTheChatMessage);
     // Server.getChannel("chat").ifPresent(c -> c.sendAll(joinedTheChatMessage));

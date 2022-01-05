@@ -1,9 +1,0 @@
-gauncher\frontend2\logging\Logger.class
-gauncher\frontend2\exception\UnprocessableViewException.class
-gauncher\frontend2\client\Client.class
-module-info.class
-gauncher\frontend2\App.class
-gauncher\frontend2\view\View.class
-gauncher\frontend2\controller\ConnectionController.class
-gauncher\frontend2\SystemInfo.class
-gauncher\frontend2\view\ConnectionView.class
