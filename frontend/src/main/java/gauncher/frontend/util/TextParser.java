@@ -66,8 +66,11 @@ public class TextParser {
             (event, property) -> {
               if (event.getCode().equals(KeyCode.BACK_SPACE)) {
                 if (event.isControlDown()) property.set("");
-                var value = property.get();
-                if (value.length() > 0) property.set(value.substring(0, value.length() - 1));
+                else {
+                  System.out.println("event = " + event);
+                  var value = property.get();
+                  if (value.length() > 0) property.set(value.substring(0, value.length() - 1));
+                }
               }
             })
         // Set position carret to max value
