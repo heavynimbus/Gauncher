@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  gauncher-db:
+    container_name: gauncher-db
+    image: postgres
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_DB: gauncher-db
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: supersecuredpass
+      POSTGRES_PORT: 5432
