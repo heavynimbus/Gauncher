@@ -25,4 +25,16 @@ public class InsertRequest<T extends Entity> extends SqlRequest {
         this.values.add(entity);
         return this;
     }
+
+    public void execute() throws SQLException {
+        this.statement.executeUpdate(this.toString());
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder("INSERT INTO ").append(tableName).append(" VALUES ");
+        values.forEach(value -> builder.append(value.getInsertValueString()).append(","));
+        builder.setLength(builder.length() - 1);
+        return builder.toString();
+    }
 }

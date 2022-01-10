@@ -23,6 +23,7 @@ public abstract class Entity {
         System.out.println("resultSet.getString(\"created_at\") = " + resultSet.getString("created_at"));
     }
 
-    public abstract String getValueString();
+    public abstract String getInsertValueString();
 
+    public abstract String getUpdateValueString();
 }

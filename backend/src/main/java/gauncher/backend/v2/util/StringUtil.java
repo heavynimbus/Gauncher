@@ -1,5 +1,7 @@
 package gauncher.backend.v2.util;
 
+import gauncher.backend.v2.player.Player;
+
 public class StringUtil {
 
     public static String shortify(String string) {
@@ -11,5 +13,9 @@ public class StringUtil {
             }
         }
         return res.toString();
+    }
+
+    public static String formatForChat(Player player, String line) {
+        return String.format("%s: %s", player.getUsername(), line);
     }
 }

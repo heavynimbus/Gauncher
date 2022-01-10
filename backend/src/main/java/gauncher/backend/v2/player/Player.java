@@ -1,6 +1,7 @@
 package gauncher.backend.v2.player;
 
 import gauncher.backend.v1.logging.Logger;
+import gauncher.backend.v2.exception.DisconnectException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import static java.lang.String.format;
 
 public class Player {
-    private final Logger log = new Logger();
+    private final Logger log = new Logger("Player");
     private static int count = 1;
     private String username;
     private boolean isLogged;
@@ -40,9 +41,19 @@ public class Player {
         isLogged = logged;
     }
 
-    public Optional<String> readLine() throws IOException {
-        var line = reader.readLine();
-        if (line == null) disconnect();
+    /*
+        Return null if the client send an EOF
+     */
+    public Optional<String> readLine() throws DisconnectException {
+        String line = null;
+        try {
+            line = reader.readLine();
+            if (line == null) {
+                throw new DisconnectException(this);
+            }
+        } catch (IOException e) {
+            throw new DisconnectException(this);
+        }
         return Optional.ofNullable(line);
     }
 
@@ -80,6 +91,7 @@ public class Player {
     public void disconnect() {
         try {
             log.info(format("Closing socket for %s", this));
+            this.setLogged(false);
             this.socket.close();
             this.printer.close();
             this.reader.close();

@@ -41,12 +41,12 @@ public class ServerV2 {
                 client = server.accept();
                 player = new Player(client);
             } catch (IOException e) {
-                log.error("An IOException has occured on waiting for connection");
+                log.error("An IOException has occured on waiting for connection or creating player");
                 e.printStackTrace();
                 return;
             }
             log.info(format("New connection from %s", player));
-            new LoginHandler(player, 0).start();
+            new LoginHandler(player).start();
         }
     }
 }

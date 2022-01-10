@@ -19,6 +19,11 @@ public class Client extends Entity {
         this.password = password;
     }
 
+    public Client(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+
     public Client(ResultSet resultSet) throws SQLException {
         super(resultSet);
         this.username = resultSet.getString("username");
@@ -26,8 +31,13 @@ public class Client extends Entity {
     }
 
     @Override
-    public String getValueString() {
-        return String.format("(%d, '%s', '%s', '%s', '%s')", id, username, password, createdAt, updatedAt);
+    public String getInsertValueString() {
+        return String.format("('%s','%s')", username, password);
+    }
+
+    @Override
+    public String getUpdateValueString() {
+        return null;
     }
 }
 
