@@ -1,5 +1,4 @@
 module backend {
+    requires java.sql;
     exports gauncher.backend;
-    exports gauncher.backend.v1;
-
 }
