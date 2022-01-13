@@ -32,9 +32,18 @@ public class InsertRequest<T extends Entity> extends SqlRequest {
 
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder("INSERT INTO ").append(tableName).append(" VALUES ");
-        values.forEach(value -> builder.append(value.getInsertValueString()).append(","));
+        var first = values.get(0);
+        StringBuilder builder = new StringBuilder("INSERT INTO ")
+                .append(first.getTableName())
+                .append(first.getInsertColumnNames())
+                .append(" VALUES ");
+        values.forEach(value ->
+        {
+            builder.append(value.getInsertValueString())
+                    .append(",");
+            value.prePersist();
+        });
         builder.setLength(builder.length() - 1);
-        return builder.toString();
+        return builder.append(";").toString();
     }
 }

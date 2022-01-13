@@ -26,8 +26,23 @@ public abstract class Entity {
         this.id = resultSet.getInt("id");
     }
 
+    public abstract String getInsertColumnNames();
+
     public abstract String getInsertValueString();
 
     public abstract String getUpdateValueString();
+
+    public abstract String getTableName();
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void prePersist(){
+        if(this.createdAt == null) this.createdAt = Instant.now();
+        this.updatedAt = Instant.now();
+    }
+
+
 }
 

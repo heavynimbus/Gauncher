@@ -5,11 +5,13 @@ import gauncher.backend.database.DatabaseConnection;
 import gauncher.backend.database.entity.Client;
 import gauncher.backend.handler.LoginHandler;
 import gauncher.backend.logging.Logger;
+import gauncher.backend.service.InitDatabaseService;
 
 import javax.net.ServerSocketFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 import java.util.Optional;
 
 public class Server {
@@ -38,12 +40,21 @@ public class Server {
         new LoginHandler(player).start();
       }
     }*/
+    private static void initDb() {
+        try (InitDatabaseService initService = new InitDatabaseService()) {
+            initService.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
-
-    public static void main(String[] args) throws IOException{
+    public static void main(String[] args) throws IOException {
+        initDb();
         var server = new ServerSocket(SERVER_PORT);
-        while(true){
+        log.info("Gauncher server is now waiting at port %s", server.getLocalPort());
+        while (true) {
             Socket socket = server.accept();
+            log.info("New connection from %s", socket.getRemoteSocketAddress());
             Client client = new Client(socket);
             new LoginHandler(client).start();
         }
