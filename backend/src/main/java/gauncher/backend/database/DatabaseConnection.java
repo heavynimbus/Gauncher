@@ -13,7 +13,7 @@ public class DatabaseConnection implements AutoCloseable {
     public DatabaseConnection() {
         try {
             Class.forName("org.postgresql.Driver");
-            this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/gauncher-db", "user", "supersecuredpass");
+            this.connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/gauncher-db", "user", "pass");
         } catch (SQLException e) {
             log.error("Make sure that your database is up, connection failed");
             this.connection = null;

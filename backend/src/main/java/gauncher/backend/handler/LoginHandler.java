@@ -45,7 +45,7 @@ public class LoginHandler extends SimpleHandler {
         } else if (checkCommand("SIGN ", line)) {
             handleSign(line);
         } else {
-            client.println("Wrong command, valid commands are LOGIN, SIGN");
+            client.println("KO Wrong command, valid commands are LOGIN, SIGN");
         }
     }
 
@@ -68,6 +68,7 @@ public class LoginHandler extends SimpleHandler {
             }
         } else {
             log.error("Invalid command from %s", client);
+            client.println("KO invalid command, 'LOGIN user password'");
         }
     }
 
