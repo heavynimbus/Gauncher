@@ -3,7 +3,7 @@ package gauncher.backend.service;
 
 import gauncher.backend.database.DatabaseConnection;
 import gauncher.backend.database.entity.Client;
-import gauncher.backend.database.request.InsertRequest;
+import gauncher.backend.database.repository.ClientRepository;
 import gauncher.backend.logging.Logger;
 
 import java.nio.file.Files;
@@ -15,6 +15,7 @@ import java.util.stream.Collectors;
 
 public class InitDatabaseService extends DatabaseConnection {
     private final static Logger log = new Logger("InitDatabaseService");
+    private final static ClientRepository clientRepository = new ClientRepository();
 
     public void init() throws Exception {
         log.info("Starting database initialization");
@@ -34,6 +35,6 @@ public class InitDatabaseService extends DatabaseConnection {
                         e.printStackTrace();
                     }
                 });
-        new InsertRequest<Client>(connection).value(new Client("user", "pass")).execute();
+        clientRepository.create(new Client("user", "pass", true));
     }
 }

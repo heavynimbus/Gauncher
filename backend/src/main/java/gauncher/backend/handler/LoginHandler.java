@@ -2,17 +2,19 @@ package gauncher.backend.handler;
 
 import gauncher.backend.database.entity.Client;
 import gauncher.backend.database.repository.ClientRepository;
+import gauncher.backend.exception.AlreadyExistsException;
 import gauncher.backend.exception.DisconnectException;
 import gauncher.backend.logging.Logger;
 
-import java.sql.SQLException;
 import java.util.Arrays;
 
 public class LoginHandler extends SimpleHandler {
     private final static Logger log = new Logger("LoginHandler");
+    private final ClientRepository repository;
 
     public LoginHandler(Client client) {
         super(client);
+        this.repository = new ClientRepository();
     }
 
     @Override
@@ -41,36 +43,49 @@ public class LoginHandler extends SimpleHandler {
         if (checkCommand("LOGIN ", line)) {
             handleLogin(line);
         } else if (checkCommand("SIGN ", line)) {
-            log.debug("Sign not yet implemented");
-            client.println("Sign not yet implemented");
+            handleSign(line);
         } else {
             client.println("Wrong command, valid commands are LOGIN, SIGN");
         }
     }
 
+    public void handleSign(String line) {
+        var splittedLine = line.split(" ");
+        var count = Arrays.stream(splittedLine).filter(elt -> !elt.isEmpty()).count();
+        if (count == 3) {
+            var username = splittedLine[1];
+            var password = splittedLine[2];
+            try {
+                log.info("Create account for %s with username %s", client, username);
+                var createdClient = repository.create(new Client(username, password, true));
+                System.out.println("createdClient = " + createdClient);
+                client.println(String.format("OK %s created", client.getUsername()));
+            } catch (AlreadyExistsException e) {
+                log.error("%s can't sign with username %s, already used", client, username);
+                client.println("KO username already used");
+            }
+        } else {
+            log.error("Invalid command from %s", client);
+        }
+    }
+
     public void handleLogin(String line) {
         var splittedLine = line.split(" ");
-        var stream = Arrays.stream(splittedLine);
-        var count = stream.filter(elt -> !elt.isEmpty()).count();
+        var count = Arrays.stream(splittedLine).filter(elt -> !elt.isEmpty()).count();
         if (count == 3) {
             var username = splittedLine[1];
             var password = splittedLine[2];
             log.info(" %s try to login with username %s", this.client, username);
-            try (ClientRepository repository = new ClientRepository()) {
-                var optionalClient = repository.findByUsername(username);
-                if (optionalClient.isPresent() && optionalClient.get().checkPassword(password)) {
-                    var socket = client.getSocket();
-                    this.client = optionalClient.get();
-                    this.client.setSocket(socket);
-                    client.println("OK Successfully logged in");
-                    log.info("%s successfully logged in", client);
-                } else {
-                    log.error("Wrong username or password from %s", client);
-                    this.client.println("KO Wrong username or password");
-                }
-            } catch (SQLException e) {
-                log.error("Internal server error (check the stacktrace)");
-                e.printStackTrace();
+            var optionalClient = repository.findByUsername(username);
+            if (optionalClient.isPresent() && optionalClient.get().checkPassword(password)) {
+                var socket = client.getSocket();
+                this.client = optionalClient.get();
+                this.client.setSocket(socket);
+                client.println("OK Successfully logged in");
+                log.info("%s successfully logged in", client);
+            } else {
+                log.error("Wrong username or password from %s", client);
+                this.client.println("KO Wrong username or password");
             }
         } else {
             log.error("Invalid command from %s", client);

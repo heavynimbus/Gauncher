@@ -41,7 +41,8 @@ public class Client extends Entity {
 
     public Client(String username, String password, boolean hashPassword) {
         this.username = username;
-        this.password = hashPassword ? passwordService.hash(password) : password;
+        if (hashPassword) this.setPassword(password);
+        else this.password = password;
     }
 
     public Client(ResultSet resultSet) throws SQLException {
@@ -52,13 +53,9 @@ public class Client extends Entity {
         this.updatedAt = resultSet.getTimestamp("updated_at").toInstant();
     }
 
-    /*
-        public Client(ResultSet resultSet) throws SQLException {
-            super(resultSet);
-            this.username = resultSet.getString("username");
-            this.password = resultSet.getString("password");
-        }
-    */
+    public String getUsername() {
+        return username;
+    }
 
     public void setSocket(Socket socket) {
         try {
@@ -75,7 +72,7 @@ public class Client extends Entity {
     }
 
     public boolean checkPassword(String password) {
-        return password.equals(this.password);
+        return passwordService.hash(password).equals(this.password);
     }
 
     public void setUsername(String username) {

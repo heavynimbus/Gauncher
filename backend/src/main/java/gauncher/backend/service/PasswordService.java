@@ -9,7 +9,7 @@ public class PasswordService {
 
     public PasswordService() {
         try {
-            md = MessageDigest.getInstance("SHA-256");
+            md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
