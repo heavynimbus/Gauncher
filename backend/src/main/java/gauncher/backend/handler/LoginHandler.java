@@ -28,7 +28,7 @@ public class LoginHandler extends SimpleHandler {
                 e.printStackTrace();
             }
         }
-        log.info("%s is connected", client);
+        new ChatHandler(client).start();
     }
 
     private boolean checkCommand(String command, String line) {
@@ -58,8 +58,10 @@ public class LoginHandler extends SimpleHandler {
             try {
                 log.info("Create account for %s with username %s", client, username);
                 var createdClient = repository.create(new Client(username, password, true));
-                System.out.println("createdClient = " + createdClient);
-                client.println(String.format("OK %s created", client.getUsername()));
+                /*var socket = client.getSocket();
+                this.client = createdClient;
+                this.client.setSocket(socket);*/
+                client.println(String.format("OK %s created", createdClient.getUsername()));
             } catch (AlreadyExistsException e) {
                 log.error("%s can't sign with username %s, already used", client, username);
                 client.println("KO username already used");

@@ -59,12 +59,17 @@ public class Client extends Entity {
 
     public void setSocket(Socket socket) {
         try {
+            System.out.println("socket = " + socket);
             this.socket = socket;
             this.printer = new PrintWriter(socket.getOutputStream(), true);
             this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public PrintWriter getPrinter() {
+        return printer;
     }
 
     public void setPassword(String password) {
