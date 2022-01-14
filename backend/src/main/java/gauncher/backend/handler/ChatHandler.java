@@ -30,8 +30,8 @@ public class ChatHandler extends SimpleHandler {
                 log.error("%s has been disconnected", clientEntity);
                 e.printStackTrace();
                 CLIENT_ENTITIES.remove(clientEntity);
-                try {
-                    new ConnectionRepository().disconnect(clientEntity);
+                try (ConnectionRepository connectionRepository = new ConnectionRepository()){
+                    connectionRepository.disconnect(clientEntity);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }

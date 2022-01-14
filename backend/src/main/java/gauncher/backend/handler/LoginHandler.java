@@ -41,7 +41,8 @@ public class LoginHandler extends SimpleHandler {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            new ChatHandler(clientEntity).start();
+            //new ChatHandler(clientEntity).start();
+            new MenuHandler(clientEntity).start();
         } else log.error("An error has occurred, please take a look at the stacktrace");
     }
 
