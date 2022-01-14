@@ -88,6 +88,7 @@ public class ConnectionController implements Initializable {
           var errorMessage = format("Connection with %s failed", ipAddr);
           LOG.error(errorMessage);
           progressIndicator.setVisible(false);
+          submitButton.setDisable(false);
           this.showErrorLabel(errorMessage);
         });
 

@@ -1,63 +1,62 @@
 package gauncher.backend;
 
-import static java.lang.String.format;
 
-import gauncher.backend.channel.Channel;
-import gauncher.backend.channel.Channels;
-import gauncher.backend.channel.CommandChannel;
-import gauncher.backend.channel.chat.ChatChannel;
+import gauncher.backend.database.DatabaseConnection;
+import gauncher.backend.database.entity.Client;
+import gauncher.backend.handler.LoginHandler;
 import gauncher.backend.logging.Logger;
-import gauncher.backend.player.Player;
+import gauncher.backend.service.InitDatabaseService;
+
+import javax.net.ServerSocketFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.Arrays;
 import java.util.Optional;
-import javax.net.ServerSocketFactory;
 
 public class Server {
+    private static final int SERVER_PORT = 8080;
+    private static final Logger log = new Logger("ServerV2");
 
-  private static final int SERVER_PORT = 8080;
-
-  public static Map<String, ArrayList<Socket>> channels = new HashMap<>();
-  public static List<Channel> channelList = List.of(new ChatChannel());
-
-  public static Optional<Channel> getChannel(String channelName) {
-    return channelList.stream()
-        .filter(channel -> !channel.isFull())
-        .filter(channel -> channel.getName().equals(channelName))
-        .findFirst();
-  }
-
-  public static void main(String[] args) {
-    Logger log = new Logger("ServerLogger");
-    Channels.initChannelList();
-    channels.put("chat", new ArrayList<>());
-    channels.put("demineur", new ArrayList<>());
-
-    log.info(format("Server starting at port %s...", SERVER_PORT));
-    ServerSocket serverSocket = null;
-    try {
-      serverSocket = ServerSocketFactory.getDefault().createServerSocket(SERVER_PORT);
-    } catch (IOException e) {
-      log.error(format("Unable to start server at port %s", SERVER_PORT));
-      System.exit(1);
-    }
-
-    while (!serverSocket.isClosed()) {
-      log.info("Currently waiting for connections...");
-      Socket client = null;
-      try {
-        client = serverSocket.accept();
-        Player player = new Player(client);
+    /*
+    public static void main(String[] args) throws Exception {
+      new InitDatabaseService().init();
+      var optionalServerSocket = initServer();
+      if (optionalServerSocket.isEmpty()) return;
+      ServerSocket server = optionalServerSocket.get();
+      log.info(format("Gauncher server is now listening at port %d", 8080));
+      while (true) {
+        Socket client;
+        Player player;
+        try {
+          client = server.accept();
+          player = new Player(client);
+        } catch (IOException e) {
+          log.error("An IOException has occured on waiting for connection or creating player");
+          e.printStackTrace();
+          return;
+        }
         log.info(format("New connection from %s", player));
-        Channels.addPlayer(CommandChannel.class, player);
-      } catch (IOException e) {
-        log.error("An I/O error has occurred on waiting for a connection");
+        new LoginHandler(player).start();
       }
+    }*/
+    private static void initDb() {
+        try (InitDatabaseService initService = new InitDatabaseService()) {
+            initService.init();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
-  }
+
+    public static void main(String[] args) throws IOException {
+        initDb();
+        var server = new ServerSocket(SERVER_PORT);
+        log.info("Gauncher server is now waiting at port %s", server.getLocalPort());
+        while (true) {
+            Socket socket = server.accept();
+            log.info("New connection from %s", socket.getRemoteSocketAddress());
+            Client client = new Client(socket);
+            new LoginHandler(client).start();
+        }
+    }
 }
