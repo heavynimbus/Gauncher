@@ -1,8 +1,8 @@
 # Documentation serveur Login / Sign in
 
-*Tous les examples seront fait avec un client simple* ***netcat*** *afin de pouvoir voir les discutions client-serveur.*
+*Tous les examples seront fait avec un clientEntity simple* ***netcat*** *afin de pouvoir voir les discutions clientEntity-serveur.*
 
-Une fois que la connection TCP est effectuée avec le serveur, deux commandes peuvent être exécutées.
+Une fois que la connectionEntity TCP est effectuée avec le serveur, deux commandes peuvent être exécutées.
 
 <img src="../img/login-bad-command-example.png">
 

@@ -49,6 +49,9 @@ docker-compose up -d schoolapp-db
 psql -h localhost -p 5432 -U user -p pass gauncher-db
 ```
 
+La database est initialisée au lancement du backend via le fichier `src/main/resources/init-db.sql`, qui est chargé et 
+exécuté par le service `gauncher.backend.service.InitDatabaseService`.
+
 ### Backend
 
 Le serveur est un serveur TCP java écoutant sur le port 8080. Afin de l'instancier, executez les commandes suivantes à
@@ -69,7 +72,7 @@ Voir la [documentation](doc/md/doc-login.md) du serveur.
 
 ### Frontend
 
-Le client est un client lourd javaFX. Afin de l'instancier, executez les commandes suivantes à la racine du projet:
+Le clientEntity est un clientEntity lourd javaFX. Afin de l'instancier, executez les commandes suivantes à la racine du projet:
 
 ```shell
 # go into the frontend module
@@ -78,6 +81,6 @@ cd frontend
 # compile the frontend
 mvn compile
 
-# start a new client
+# start a new clientEntity
 mvn javafx:run
 ```

@@ -1,11 +1,9 @@
 package gauncher.backend.exception;
 
-import gauncher.backend.database.entity.Client;
-
-import java.util.Optional;
+import gauncher.backend.database.entity.ClientEntity;
 
 public class DisconnectException extends Exception {
-    public DisconnectException(Client client) {
-        super(String.format("%s has been disconnected", client));
+    public DisconnectException(ClientEntity clientEntity) {
+        super(String.format("%s has been disconnected", clientEntity));
     }
 }

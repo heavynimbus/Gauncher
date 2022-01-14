@@ -2,7 +2,7 @@ package gauncher.backend.service;
 
 
 import gauncher.backend.database.DatabaseConnection;
-import gauncher.backend.database.entity.Client;
+import gauncher.backend.database.entity.ClientEntity;
 import gauncher.backend.database.repository.ClientRepository;
 import gauncher.backend.logging.Logger;
 
@@ -35,6 +35,6 @@ public class InitDatabaseService extends DatabaseConnection {
                         e.printStackTrace();
                     }
                 });
-        clientRepository.create(new Client("user", "pass", true));
+        clientRepository.create(new ClientEntity("user", "pass", true));
     }
 }

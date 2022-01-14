@@ -1,11 +1,11 @@
 package gauncher.backend.handler;
 
-import gauncher.backend.database.entity.Client;
+import gauncher.backend.database.entity.ClientEntity;
 
 public abstract class SimpleHandler extends Thread {
-    protected Client client;
+    protected ClientEntity clientEntity;
 
-    public SimpleHandler(Client client) {
-        this.client = client;
+    public SimpleHandler(ClientEntity clientEntity) {
+        this.clientEntity = clientEntity;
     }
 }

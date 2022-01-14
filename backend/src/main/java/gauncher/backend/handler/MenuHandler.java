@@ -1,10 +1,10 @@
 package gauncher.backend.handler;
 
-import gauncher.backend.database.entity.Client;
+import gauncher.backend.database.entity.ClientEntity;
 
 public class MenuHandler extends SimpleHandler{
 
-    public MenuHandler(Client client) {
-        super(client);
+    public MenuHandler(ClientEntity clientEntity) {
+        super(clientEntity);
     }
 }

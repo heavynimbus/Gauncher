@@ -1,6 +1,6 @@
 # Documentation serveur Chat
 
-Le Chat est un des salons du serveur. Lorsqu'un client qui est dans le salon envoie un message au serveur, alors il est
+Le Chat est un des salons du serveur. Lorsqu'un clientEntity qui est dans le salon envoie un message au serveur, alors il est
 renvoyé à toutes les personnes du salon avec le format suivant :
 
 ```shell
@@ -13,7 +13,7 @@ Des commandes sont disponibles pour les utilisateurs afin de plus avoir d'intera
 
 ### /list
 
-Si le client envoie `/list` au serveur, alors il reçoit la liste de tous les clients séparés d'une virgule, 
+Si le clientEntity envoie `/list` au serveur, alors il reçoit la liste de tous les clients séparés d'une virgule, 
 précédé de `SERVER: `.
 
 ### /quit

@@ -1,6 +1,7 @@
 package gauncher.backend.database.entity;
 
 
+import gauncher.backend.database.repository.ConnectionRepository;
 import gauncher.backend.exception.DisconnectException;
 import gauncher.backend.logging.Logger;
 import gauncher.backend.service.PasswordService;
@@ -13,11 +14,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.Instant;
-import java.time.LocalDateTime;
 
 
-public class Client extends Entity {
+public class ClientEntity extends Entity {
     private static final Logger log = new Logger("Client");
     private static final PasswordService passwordService = new PasswordService();
     private static final StringUtil stringUtil = new StringUtil();
@@ -28,29 +27,27 @@ public class Client extends Entity {
     private PrintWriter printer;
     private BufferedReader reader;
 
-    public Client(Socket socket) {
+    public ClientEntity(Socket socket) {
         super();
         setSocket(socket);
     }
 
-    public Client(String username, String password) {
+    public ClientEntity(String username, String password) {
         super();
         this.username = username;
         this.password = password;
     }
 
-    public Client(String username, String password, boolean hashPassword) {
+    public ClientEntity(String username, String password, boolean hashPassword) {
         this.username = username;
         if (hashPassword) this.setPassword(password);
         else this.password = password;
     }
 
-    public Client(ResultSet resultSet) throws SQLException {
-        this.id = resultSet.getInt("id");
+    public ClientEntity(ResultSet resultSet) throws SQLException {
+        super(resultSet);
         this.username = resultSet.getString("username");
         this.password = resultSet.getString("password");
-        this.createdAt = resultSet.getTimestamp("created_at").toInstant();
-        this.updatedAt = resultSet.getTimestamp("updated_at").toInstant();
     }
 
     public String getUsername() {
@@ -59,7 +56,6 @@ public class Client extends Entity {
 
     public void setSocket(Socket socket) {
         try {
-            System.out.println("socket = " + socket);
             this.socket = socket;
             this.printer = new PrintWriter(socket.getOutputStream(), true);
             this.reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));

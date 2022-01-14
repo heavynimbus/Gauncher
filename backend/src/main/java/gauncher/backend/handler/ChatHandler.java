@@ -1,66 +1,73 @@
 package gauncher.backend.handler;
 
-import gauncher.backend.database.entity.Client;
+import gauncher.backend.database.entity.ClientEntity;
+import gauncher.backend.database.repository.ConnectionRepository;
 import gauncher.backend.exception.DisconnectException;
 import gauncher.backend.logging.Logger;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ChatHandler extends SimpleHandler {
     private final static Logger log = new Logger("ChatHandler");
-    private final static List<Client> clients = new ArrayList<>();
+    private final static List<ClientEntity> CLIENT_ENTITIES = new ArrayList<>();
 
-    public ChatHandler(Client client) {
-        super(client);
-        clients.add(client);
+    public ChatHandler(ClientEntity clientEntity) {
+        super(clientEntity);
+        CLIENT_ENTITIES.add(clientEntity);
     }
 
     @Override
     public void run() {
         while (true) {
             try {
-                String line = client.readLine();
+                String line = clientEntity.readLine();
                 if (line != null) handleLine(line);
-                else throw new DisconnectException(client);
+                else throw new DisconnectException(clientEntity);
             } catch (DisconnectException e) {
-                log.error("%s has been disconnected", client);
+                log.error("%s has been disconnected", clientEntity);
                 e.printStackTrace();
-                clients.remove(client);
+                CLIENT_ENTITIES.remove(clientEntity);
+                try {
+                    new ConnectionRepository().disconnect(clientEntity);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
                 break;
             }
         }
     }
 
     private void handleLine(String line) {
-        log.info("Received from %s: %s", client, line);
+        log.info("Received from %s: %s", clientEntity, line);
         if (line.startsWith("/")) handleCommand(line);
-        else broadcast(String.format("%s: %s", client.getUsername(), line));
+        else broadcast(String.format("%s: %s", clientEntity.getUsername(), line));
     }
 
     private void handleCommand(String line) {
         try {
             if (line.substring(0, 5).equalsIgnoreCase("/help")) {
-                client.println("/help --> show this help message");
-                client.println("/list --> get the list of people connected to the chat");
-                client.println("/quit --> leave the chat");
+                clientEntity.println("/help --> show this help message");
+                clientEntity.println("/list --> get the list of people connected to the chat");
+                clientEntity.println("/quit --> leave the chat");
             } else if (line.substring(0, 5).equalsIgnoreCase("/list")) {
-                var list = clients.stream().map(Client::getUsername).collect(Collectors.joining(","));
-                client.println(String.format("SERVER: %s", list));
+                var list = CLIENT_ENTITIES.stream().map(ClientEntity::getUsername).collect(Collectors.joining(","));
+                clientEntity.println(String.format("SERVER: %s", list));
             } else if (line.substring(0, 5).equalsIgnoreCase("/quit")) {
-                clients.remove(client);
+                CLIENT_ENTITIES.remove(clientEntity);
             } else {
                 throw new StringIndexOutOfBoundsException();
             }
         } catch (StringIndexOutOfBoundsException e) {
-            client.println("SERVER: invalid command, try /help");
+            clientEntity.println("SERVER: invalid command, try /help");
         }
     }
 
     private void broadcast(String line) {
-        clients.stream()
-                .map(Client::getPrinter)
+        CLIENT_ENTITIES.stream()
+                .map(ClientEntity::getPrinter)
                 .forEach(printWriter -> printWriter.println(line));
     }
 }

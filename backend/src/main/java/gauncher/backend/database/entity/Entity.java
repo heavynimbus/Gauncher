@@ -3,7 +3,9 @@ package gauncher.backend.database.entity;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.Clock;
 import java.time.Instant;
+import java.time.ZoneId;
 
 public abstract class Entity {
     protected Integer id;
@@ -24,6 +26,8 @@ public abstract class Entity {
 
     public Entity(ResultSet resultSet) throws SQLException {
         this.id = resultSet.getInt("id");
+        this.createdAt = resultSet.getTimestamp("created_at").toInstant();
+        this.updatedAt = resultSet.getTimestamp("updated_at").toInstant();
     }
 
     public abstract String getInsertColumnNames();
@@ -38,9 +42,10 @@ public abstract class Entity {
         return id;
     }
 
-    public void prePersist(){
-        if(this.createdAt == null) this.createdAt = Instant.now();
-        this.updatedAt = Instant.now();
+    public void prePersist() {
+        var now = Instant.now().atZone(ZoneId.of("Europe/Paris"));
+        if (this.createdAt == null) this.createdAt = Instant.now(Clock.systemDefaultZone());
+        this.updatedAt = Instant.now(Clock.systemUTC());
     }
 
 

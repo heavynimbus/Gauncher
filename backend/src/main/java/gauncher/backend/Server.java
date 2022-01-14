@@ -1,18 +1,14 @@
 package gauncher.backend;
 
 
-import gauncher.backend.database.DatabaseConnection;
-import gauncher.backend.database.entity.Client;
+import gauncher.backend.database.entity.ClientEntity;
 import gauncher.backend.handler.LoginHandler;
 import gauncher.backend.logging.Logger;
 import gauncher.backend.service.InitDatabaseService;
 
-import javax.net.ServerSocketFactory;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Arrays;
-import java.util.Optional;
 
 public class Server {
     private static final int SERVER_PORT = 8080;
@@ -55,8 +51,8 @@ public class Server {
         while (true) {
             Socket socket = server.accept();
             log.info("New connection from %s", socket.getRemoteSocketAddress());
-            Client client = new Client(socket);
-            new LoginHandler(client).start();
+            ClientEntity clientEntity = new ClientEntity(socket);
+            new LoginHandler(clientEntity).start();
         }
     }
 }

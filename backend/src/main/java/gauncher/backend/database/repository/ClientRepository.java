@@ -1,7 +1,7 @@
 package gauncher.backend.database.repository;
 
 import gauncher.backend.database.DatabaseConnection;
-import gauncher.backend.database.entity.Client;
+import gauncher.backend.database.entity.ClientEntity;
 import gauncher.backend.database.request.InsertRequest;
 import gauncher.backend.database.request.SelectRequest;
 import gauncher.backend.exception.AlreadyExistsException;
@@ -12,25 +12,25 @@ import java.util.Optional;
 
 public class ClientRepository extends DatabaseConnection {
 
-    public Optional<Client> findByUsername(String username) {
+    public Optional<ClientEntity> findByUsername(String username) {
         try {
             SelectRequest request = new SelectRequest(connection).select().from("client").where("username = '" + username + "'");
             ResultSet result = request.execute();
             if (result.next())
-                return Optional.of(new Client(result));
+                return Optional.of(new ClientEntity(result));
         } catch (SQLException e) {
             e.printStackTrace();
         }
         return Optional.empty();
     }
 
-    public Client create(Client client) throws AlreadyExistsException {
+    public ClientEntity create(ClientEntity clientEntity) throws AlreadyExistsException {
         try {
-            new InsertRequest<Client>(connection).value(client).execute();
-            return findByUsername(client.getUsername()).get();
+            new InsertRequest<ClientEntity>(connection).value(clientEntity).execute();
+            return findByUsername(clientEntity.getUsername()).get();
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new AlreadyExistsException("%s already exists");
+            throw new AlreadyExistsException(String.format("Username %s already exists", clientEntity.getUsername()));
         }
     }
 }

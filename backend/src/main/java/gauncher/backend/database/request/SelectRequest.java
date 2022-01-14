@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.Arrays;
 
 public class SelectRequest extends SqlRequest {
-    private final static Logger log = new Logger("SqlRequest");
+    private final static Logger log = new Logger("SelectRequest");
     private String table;
     private String[] columns;
     private String whereClause;
@@ -40,7 +40,7 @@ public class SelectRequest extends SqlRequest {
     @Override
     public String toString() {
         StringBuilder request = new StringBuilder("SELECT");
-        if (columns.length == 0) request.append(" * ");
+        if (columns == null || columns.length == 0) request.append(" * ");
         else {
             Arrays.stream(columns).map((column) -> " " + column + ",").forEachOrdered(request::append);
             request.setLength(request.length() - 1);
