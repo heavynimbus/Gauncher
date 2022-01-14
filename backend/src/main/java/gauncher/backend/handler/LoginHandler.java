@@ -24,11 +24,14 @@ public class LoginHandler extends SimpleHandler {
             try {
                 String line = client.readLine();
                 if (line != null) handleLine(line);
+                else throw new DisconnectException(client);
             } catch (DisconnectException e) {
                 e.printStackTrace();
+                break;
             }
         }
-        new ChatHandler(client).start();
+        if (client.getId() != null)
+            new ChatHandler(client).start();
     }
 
     private boolean checkCommand(String command, String line) {
@@ -50,17 +53,14 @@ public class LoginHandler extends SimpleHandler {
     }
 
     public void handleSign(String line) {
-        var splittedLine = line.split(" ");
-        var count = Arrays.stream(splittedLine).filter(elt -> !elt.isEmpty()).count();
+        var splitLine = line.split(" ");
+        var count = Arrays.stream(splitLine).filter(elt -> !elt.isEmpty()).count();
         if (count == 3) {
-            var username = splittedLine[1];
-            var password = splittedLine[2];
+            var username = splitLine[1];
+            var password = splitLine[2];
             try {
                 log.info("Create account for %s with username %s", client, username);
                 var createdClient = repository.create(new Client(username, password, true));
-                /*var socket = client.getSocket();
-                this.client = createdClient;
-                this.client.setSocket(socket);*/
                 client.println(String.format("OK %s created", createdClient.getUsername()));
             } catch (AlreadyExistsException e) {
                 log.error("%s can't sign with username %s, already used", client, username);
@@ -73,11 +73,11 @@ public class LoginHandler extends SimpleHandler {
     }
 
     public void handleLogin(String line) {
-        var splittedLine = line.split(" ");
-        var count = Arrays.stream(splittedLine).filter(elt -> !elt.isEmpty()).count();
+        var splitLine = line.split(" ");
+        var count = Arrays.stream(splitLine).filter(elt -> !elt.isEmpty()).count();
         if (count == 3) {
-            var username = splittedLine[1];
-            var password = splittedLine[2];
+            var username = splitLine[1];
+            var password = splitLine[2];
             log.info(" %s try to login with username %s", this.client, username);
             var optionalClient = repository.findByUsername(username);
             if (optionalClient.isPresent() && optionalClient.get().checkPassword(password)) {

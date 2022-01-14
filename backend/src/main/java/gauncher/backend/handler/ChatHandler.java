@@ -23,10 +23,12 @@ public class ChatHandler extends SimpleHandler {
             try {
                 String line = client.readLine();
                 if (line != null) handleLine(line);
+                else throw new DisconnectException(client);
             } catch (DisconnectException e) {
                 log.error("%s has been disconnected", client);
                 e.printStackTrace();
                 clients.remove(client);
+                break;
             }
         }
     }
@@ -44,8 +46,8 @@ public class ChatHandler extends SimpleHandler {
                 client.println("/list --> get the list of people connected to the chat");
                 client.println("/quit --> leave the chat");
             } else if (line.substring(0, 5).equalsIgnoreCase("/list")) {
-                var list = clients.stream().map(Client::getUsername).collect(Collectors.joining("\n"));
-                client.println(list);
+                var list = clients.stream().map(Client::getUsername).collect(Collectors.joining(","));
+                client.println(String.format("SERVER: %s", list));
             } else if (line.substring(0, 5).equalsIgnoreCase("/quit")) {
                 clients.remove(client);
             } else {
