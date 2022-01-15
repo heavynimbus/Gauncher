@@ -1,10 +1,13 @@
 package gauncher.frontend.controller;
 
 import gauncher.frontend.App;
+import gauncher.frontend.exception.UnprocessableViewException;
 import gauncher.frontend.logging.Logger;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import gauncher.frontend.view.LauncherView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -14,6 +17,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
@@ -123,6 +127,11 @@ public class ChatController implements Initializable {
       App.client.println(value);
       messageBoxValue.set("");
     }
+  }
+
+  @FXML
+  void previousView(MouseEvent event) throws UnprocessableViewException {
+      App.setCurrentScene(new LauncherView());
   }
 }
 // (code.isDigitKey() || code.isLetterKey() || code.isWhitespaceKey()) && value != null) {

@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.SocketException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import gauncher.frontend.view.LauncherView;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -71,7 +73,7 @@ public class LoginController implements Initializable {
         App.client.println("USERNAME");
         response = App.client.readLine();
         App.client.setPseudo(response);
-        App.setCurrentScene(new ChatView());
+        App.setCurrentScene(new LauncherView());
       }
     } catch (SocketException e) {
       log.error("Client have been disconnected from the server");

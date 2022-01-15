@@ -1,0 +1,7 @@
+#menu {
+    -fx-background-color: #3D5D85;
+}
+
+#menu #logoGauncher {
+    -fx-pref-width: 50;
+}
