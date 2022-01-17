@@ -41,5 +41,10 @@
          </font>
       </Button>
       <PasswordField fx:id="passwordInput" layoutX="369.0" layoutY="176.0" />
+      <Text fill="#ffc90e" layoutX="193.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SE CONNECTER">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
    </children>
 </AnchorPane>
