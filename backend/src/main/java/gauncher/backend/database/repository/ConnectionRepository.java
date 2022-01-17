@@ -38,4 +38,16 @@ public class ConnectionRepository extends DatabaseConnection {
             new UpdateRequest<>(this.connection, connectionEntity).execute();
         }
     }
+
+    public Long getActiveCount() {
+        try {
+            var rs = new SelectRequest(connection).select("count(*) as count").from("connection").where("status = 'ACTIVE'").execute();
+            if (rs.next())
+                return rs.getLong("count");
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return -1L;
+    }
+
 }

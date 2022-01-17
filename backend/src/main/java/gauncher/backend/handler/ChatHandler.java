@@ -3,25 +3,26 @@ package gauncher.backend.handler;
 import gauncher.backend.database.entity.ClientEntity;
 import gauncher.backend.database.repository.ConnectionRepository;
 import gauncher.backend.exception.DisconnectException;
+import gauncher.backend.game.Game;
 import gauncher.backend.logging.Logger;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.stream.Collectors;
 
-public class ChatHandler extends SimpleHandler {
+public class ChatHandler extends GameHandler {
     private final static Logger log = new Logger("ChatHandler");
-    private final static List<ClientEntity> CLIENT_ENTITIES = new ArrayList<>();
+    private boolean isInChat;
 
-    public ChatHandler(ClientEntity clientEntity) {
-        super(clientEntity);
-        CLIENT_ENTITIES.add(clientEntity);
+    public ChatHandler(ClientEntity clientEntity, Game game) {
+        super(clientEntity, game);
+        this.game.addClient(clientEntity);
     }
 
     @Override
     public void run() {
-        while (true) {
+        isInChat = true;
+        this.broadcast(String.format("%s joined the chat", this.clientEntity.getUsername()));
+        while (isInChat) {
             try {
                 String line = clientEntity.readLine();
                 if (line != null) handleLine(line);
@@ -29,9 +30,9 @@ public class ChatHandler extends SimpleHandler {
             } catch (DisconnectException e) {
                 log.error("%s has been disconnected", clientEntity);
                 e.printStackTrace();
-                CLIENT_ENTITIES.remove(clientEntity);
-                try {
-                    new ConnectionRepository().disconnect(clientEntity);
+                this.leaveChat();
+                try (ConnectionRepository connectionRepository = new ConnectionRepository()) {
+                    connectionRepository.disconnect(clientEntity);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -53,10 +54,13 @@ public class ChatHandler extends SimpleHandler {
                 clientEntity.println("/list --> get the list of people connected to the chat");
                 clientEntity.println("/quit --> leave the chat");
             } else if (line.substring(0, 5).equalsIgnoreCase("/list")) {
-                var list = CLIENT_ENTITIES.stream().map(ClientEntity::getUsername).collect(Collectors.joining(","));
+                var list = game.clientStream()
+                        .map(ClientEntity::getUsername)
+                        .collect(Collectors.joining(","));
                 clientEntity.println(String.format("SERVER: %s", list));
             } else if (line.substring(0, 5).equalsIgnoreCase("/quit")) {
-                CLIENT_ENTITIES.remove(clientEntity);
+                this.leaveChat();
+                new MenuHandler(clientEntity).start();
             } else {
                 throw new StringIndexOutOfBoundsException();
             }
@@ -66,8 +70,12 @@ public class ChatHandler extends SimpleHandler {
     }
 
     private void broadcast(String line) {
-        CLIENT_ENTITIES.stream()
-                .map(ClientEntity::getPrinter)
-                .forEach(printWriter -> printWriter.println(line));
+        this.game.broadcast(line);
+    }
+
+    private void leaveChat() {
+        this.game.removeClient(this.clientEntity);
+        this.broadcast(String.format("%s left the chat", this.clientEntity.getUsername()));
+        isInChat = false;
     }
 }

@@ -43,7 +43,7 @@ public class ConnectionEntity extends Entity {
 
     @Override
     public String getUpdateValueString() {
-        return String.format("updated_at = '%s', status = '%s'", updatedAt.atZone(ZoneId.of("Europe/Paris")), status);
+        return String.format("updated_at = '%s', status = '%s'", updatedAt.atZone(ZoneId.of("Europe/Paris")).toInstant(), status);
     }
 
     @Override
