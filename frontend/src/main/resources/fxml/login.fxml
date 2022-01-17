@@ -8,8 +8,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3d5b85;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #3d5b85;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gauncher.frontend.controller.LoginController">
    <children>
       <VBox alignment="CENTER" prefHeight="400.0" prefWidth="600.0">
          <children>
@@ -20,7 +19,7 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextField />
+                  <TextField fx:id="userInput" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
@@ -30,12 +29,12 @@
                         <Font name="System Bold" size="20.0" />
                      </font>
                   </Text>
-                  <TextField />
+                  <TextField fx:id="passwordInput" />
                </children>
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Valider" textFill="#7092be">
+                  <Button fx:id="connectButton" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="150.0" text="Valider" textFill="#7092be">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>
@@ -44,7 +43,7 @@
             </HBox>
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="40.0" prefWidth="150.0" text="Creer un compte" textFill="#7092be">
+                  <Button fx:id="createButton" mnemonicParsing="false" onAction="#signIn" prefHeight="40.0" prefWidth="150.0" text="Creer un compte" textFill="#7092be">
                      <font>
                         <Font name="System Bold" size="13.0" />
                      </font>

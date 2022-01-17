@@ -5,6 +5,6 @@ import gauncher.frontend.exception.UnprocessableViewException;
 public class LoginView extends View {
 
   public LoginView() throws UnprocessableViewException {
-    super("/fxml/login_view.fxml");
+    super("/fxml/login.fxml");
   }
 }

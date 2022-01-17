@@ -26,36 +26,47 @@ public class LoginController implements Initializable {
 
   private Logger log = new Logger("LoginController");
 
-  @FXML public Button continueButton;
+//  @FXML public Button continueButton;
+//
+//  @FXML public TextField pseudo;
+//  public SimpleStringProperty pseudoValue;
 
-  @FXML public TextField pseudo;
-  public SimpleStringProperty pseudoValue;
+  @FXML
+  private Button connectButton;
+
+  @FXML
+  private Button createButton;
+
+  @FXML
+  private TextField passwordInput;
+
+  @FXML
+  private TextField userInput;
 
   @Override
   public void initialize(URL url, ResourceBundle resourceBundle) {
-    try {
-      App.client.println("USERNAME");
-      String username = App.client.readLine();
-      pseudoValue = new SimpleStringProperty(username);
-      pseudo.textProperty().bind(pseudoValue);
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+
   }
 
   @FXML
+  public void signIn() {
+
+  }
+
+
+  @FXML
   public void inputValue(KeyEvent event) {
-    TextParser.getDefaultInstance(pseudoValue, pseudo)
-        .addAction(
-            (e, stringProperty) -> {
-              if (e.getCode().equals(KeyCode.ENTER)) continueButton.requestFocus();
-            })
-        .inputValue(event);
+    /*TextParser.getDefaultInstance(pseudoValue, pseudo)
+            .addAction(
+                    (e, stringProperty) -> {
+                      if (e.getCode().equals(KeyCode.ENTER)) continueButton.requestFocus();
+                    })
+            .inputValue(event);*/
   }
 
   @FXML
   public void login() throws UnprocessableViewException {
-    var pseudoValue = this.pseudoValue.get();
+    /*var pseudoValue = this.pseudoValue.get();
     if (pseudoValue == null || pseudoValue.isEmpty() || pseudoValue.isBlank()) {
       pseudo.setStyle("-fx-border-color: red;");
       pseudo.setOnKeyPressed(
@@ -81,5 +92,6 @@ public class LoginController implements Initializable {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }*/
   }
 }
