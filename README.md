@@ -43,7 +43,7 @@ fichier `docker-compose.yaml`. Afin de l'instancier, executez les commandes suiv
 
 ```shell
 # start the docker container
-docker-compose up -d schoolapp-db
+docker-compose up -d gauncher-db
 
 # connect to the databse
 psql -h localhost -p 5432 -U user -p pass gauncher-db
