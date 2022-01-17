@@ -11,6 +11,7 @@ import java.nio.file.Path;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 
 public class InitDatabaseService extends DatabaseConnection {
@@ -36,5 +37,7 @@ public class InitDatabaseService extends DatabaseConnection {
                     }
                 });
         clientRepository.create(new ClientEntity("user", "pass", true));
+        clientRepository.create(new ClientEntity("toto", "toto", true));
+        clientRepository.create(new ClientEntity("root", "root", true));
     }
 }

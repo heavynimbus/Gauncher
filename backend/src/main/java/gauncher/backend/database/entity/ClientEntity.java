@@ -14,9 +14,11 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.concurrent.atomic.AtomicLong;
 
 
 public class ClientEntity extends Entity {
+    public static final AtomicLong NB_CLIENTS = new AtomicLong(0);
     private static final Logger log = new Logger("Client");
     private static final PasswordService passwordService = new PasswordService();
     private static final StringUtil stringUtil = new StringUtil();

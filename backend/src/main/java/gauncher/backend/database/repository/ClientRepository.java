@@ -14,7 +14,9 @@ public class ClientRepository extends DatabaseConnection {
 
     public Optional<ClientEntity> findByUsername(String username) {
         try {
-            SelectRequest request = new SelectRequest(connection).select().from("client").where("username = '" + username + "'");
+            SelectRequest request = new SelectRequest(connection).select()
+                    .from("client")
+                    .where("username = '" + username + "'");
             ResultSet result = request.execute();
             if (result.next())
                 return Optional.of(new ClientEntity(result));

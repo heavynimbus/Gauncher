@@ -54,7 +54,7 @@ public class LoginHandler extends SimpleHandler {
         }
     }
 
-    public void handleLine(String line) {
+    private void handleLine(String line) {
         if (checkCommand("LOGIN ", line)) {
             handleLogin(line);
         } else if (checkCommand("SIGN ", line)) {
@@ -64,7 +64,7 @@ public class LoginHandler extends SimpleHandler {
         }
     }
 
-    public void handleSign(String line) {
+    private void handleSign(String line) {
         var splitLine = line.split(" ");
         var count = Arrays.stream(splitLine).filter(elt -> !elt.isEmpty()).count();
         if (count == 3) {
@@ -84,7 +84,7 @@ public class LoginHandler extends SimpleHandler {
         }
     }
 
-    public void handleLogin(String line) {
+    private void handleLogin(String line) {
         var splitLine = line.split(" ");
         var count = Arrays.stream(splitLine).filter(elt -> !elt.isEmpty()).count();
         if (count == 3) {
