@@ -12,13 +12,14 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.InputStream;
 import java.net.URL;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LauncherController implements Initializable {
 
-    public final static String LOGO_TICTACTOE = "@/img/logoLogout.png.png";
+    public final static String LOGO_TICTACTOE = "/img/logoLogout.png.png";
 
     Class<?> aClass = this.getClass();
 
@@ -58,7 +59,7 @@ public class LauncherController implements Initializable {
 //        assert inputTicTacToe != null;
 //        Image imageTicTacToe = new Image(Objects.requireNonNull(getClass().getResource("img/logoLogout.png")).toExternalForm());
 //        buttonMorpion.setVisible(true);
-        var img = new Image(Objects.requireNonNull(getClass().getResource("/gauncher/frontend/controller/logoLogout.png")).toString(), true);
+//        var img = new Image(Objects.requireNonNull(getClass().getResource("/gauncher/frontend/controller/logoLogout.png")).toString(), true);
 //        buttonMorpion.setImage(new Image("/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoMorpion.png"));
 //        var scene = buttonMorpion.getScene();
 //        var img = new Image("/frontend/src/main/resources/img/logoMorpion.png");
@@ -66,7 +67,9 @@ public class LauncherController implements Initializable {
 //        buttonMorpion.setVisible(true);
 //        System.out.println("buttonMorpion = " + buttonMorpion.getImage());
 //        System.out.println("scene = " + scene);0
-        buttonMorpion.setImage(img);
+//        buttonMorpion.setImage(img);
+//        var img = new Image(getClass().getResourceAsStream(LOGO_TICTACTOE).toString());
+//        buttonMorpion.setImage(img);
         pseudoLabel.setText(App.client.getPseudo().get());
     }
 
