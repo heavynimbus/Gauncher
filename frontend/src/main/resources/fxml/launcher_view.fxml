@@ -30,9 +30,6 @@
                 <Pane prefHeight="200.0" prefWidth="200.0">
                     <children>
                         <ImageView fx:id="buttonLogout" fitHeight="65.0" fitWidth="200.0" layoutX="89.0" layoutY="40.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoLogout.png" />
-                     </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></ImageView>
@@ -40,11 +37,7 @@
                 </Pane>
                 <Pane prefHeight="200.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <ImageView fx:id="logoGauncher" fitHeight="120.0" fitWidth="200.0" layoutX="411.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoGauncher.png" />
-                            </image>
-                        </ImageView>
+                        <ImageView fx:id="logoGauncher" fitHeight="120.0" fitWidth="200.0" layoutX="411.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true" />
                     </children>
                 </Pane>
             </children>
@@ -76,11 +69,8 @@
                                 <Insets bottom="12.0" />
                             </VBox.margin>
                         </Text>
-                        <ImageView id="buttonMorpion" fx:id="buttonMorpion" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoMorpion.png" />
-                            </image>
-                        </ImageView>
+                        <ImageView fx:id="buttonMorpion" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+                     </ImageView>
                     </children>
                     <cursor>
                         <Cursor fx:constant="HAND" />
@@ -97,9 +87,6 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonReversi" fx:id="buttonReversi" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoReversi.png" />
-                            </image>
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
@@ -120,9 +107,6 @@
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
-                     <image>
-                        <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoQuizz.png" />
-                     </image>
                         </ImageView>
                     </children>
                     <cursor>
@@ -140,9 +124,6 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonDemineur" fx:id="buttonDemineur" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoDemineur.png" />
-                            </image>
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
@@ -160,9 +141,6 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonJustePrix" fx:id="buttonJustePrix" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoJustePrix.png" />
-                            </image>
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
@@ -180,9 +158,6 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonChat" fx:id="buttonChat" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#openChat" pickOnBounds="true" preserveRatio="true">
-                            <image>
-                                <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoChat.png" />
-                            </image>
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor>
