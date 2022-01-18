@@ -32,13 +32,13 @@ public class TicTacToeGame extends Game {
         }
     }
 
-    public void setReady(boolean ready) {
-        isReady = ready;
+    public Map<TicTacToeType, ClientEntity> getPlayers() {
+        return players;
     }
 
-    public TicTacToeType addPlayer(ClientEntity client){
-        if(this.isReady) return TicTacToeType.NONE;
-        if (this.players.containsKey(TicTacToeType.CROSS)){
+    public TicTacToeType addPlayer(ClientEntity client) {
+        if (this.isReady) return TicTacToeType.NONE;
+        if (this.players.containsKey(TicTacToeType.CROSS)) {
             players.put(TicTacToeType.CIRCLE, client);
             isReady = true;
             return TicTacToeType.CIRCLE;

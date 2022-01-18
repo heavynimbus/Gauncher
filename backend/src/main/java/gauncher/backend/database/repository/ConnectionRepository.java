@@ -49,5 +49,4 @@ public class ConnectionRepository extends DatabaseConnection {
         }
         return -1L;
     }
-
 }
