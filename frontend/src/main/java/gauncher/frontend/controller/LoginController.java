@@ -30,11 +30,6 @@ public class LoginController implements Initializable {
 
     private Logger log = new Logger("LoginController");
 
-//  @FXML public Button continueButton;
-//
-//  @FXML public TextField pseudo;
-//  public SimpleStringProperty pseudoValue;
-
     @FXML
     private Pane errorMessage;
 
