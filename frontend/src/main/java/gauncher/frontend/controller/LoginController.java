@@ -64,7 +64,6 @@ public class LoginController implements Initializable {
                 App.client.println(format("LOGIN %s %s", pseudoValue, passwordValue));
             }
             var response = App.client.readLine();
-            System.out.println(response);
             if (response.startsWith("OK")) {
                 App.client.setPseudo(pseudoValue);
                 App.setCurrentScene(new LauncherView());
