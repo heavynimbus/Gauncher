@@ -78,4 +78,13 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
     }
+
+    @FXML
+    void inputValue(KeyEvent event) throws UnprocessableViewException {
+        var code = event.getCode();
+        if (code.equals(KeyCode.ENTER)) {
+            this.login();
+        }
+    }
+
 }
