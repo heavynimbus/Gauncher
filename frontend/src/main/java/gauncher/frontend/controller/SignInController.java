@@ -12,6 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
@@ -39,7 +41,8 @@ public class SignInController implements Initializable {
     private TextField pseudo;
 
     @FXML
-    void signIn(ActionEvent event) throws UnprocessableViewException {
+    void signIn() throws UnprocessableViewException {
+        System.out.println("ICIIII");
         var pseudoValue = this.pseudo.getCharacters().toString();
         var passwordValue = this.password.getCharacters().toString();
         var confirmPasswordValue = this.confirmPassword.getCharacters().toString();
@@ -68,6 +71,15 @@ public class SignInController implements Initializable {
             App.setCurrentScene(new ConnectionView());
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void inputValue(KeyEvent event) throws UnprocessableViewException {
+        var code = event.getCode();
+        System.out.println("code = " + code);
+        if (code.equals(KeyCode.ENTER)) {
+            this.signIn();
         }
     }
 
