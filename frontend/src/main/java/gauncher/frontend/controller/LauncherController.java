@@ -1,8 +1,13 @@
 package gauncher.frontend.controller;
 
+import static java.lang.String.format;
+
 import gauncher.frontend.App;
 import gauncher.frontend.exception.UnprocessableViewException;
+import gauncher.frontend.logging.Logger;
 import gauncher.frontend.view.ChatView;
+import gauncher.frontend.view.ConnectionView;
+import gauncher.frontend.view.WorkInprogressView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
@@ -12,16 +17,22 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.io.InputStream;
+import java.net.SocketException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LauncherController implements Initializable {
 
-    public final static String LOGO_TICTACTOE = "/img/logoLogout.png.png";
+    private Logger log = new Logger("LauncherController");
 
     Class<?> aClass = this.getClass();
+
+    String[] gameList = new String[]{"demineur", "battleQuiz", "reversi", "justePrix", "tictactoe", "chat"};
 
     @FXML
     private ImageView buttonBattleQuiz;
@@ -53,23 +64,39 @@ public class LauncherController implements Initializable {
     @FXML
     private Text pseudoLabel;
 
+    @FXML
+    private Text chatCompt;
+
+    @FXML
+    private Text demineurCompt;
+
+    @FXML
+    private Text justePrixCompt;
+
+    @FXML
+    private Text quizCompt;
+
+    @FXML
+    private Text reversiCompt;
+
+    @FXML
+    private Text tictactoeCompt;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-//        InputStream inputTicTacToe =  aClass.getResourceAsStream(LOGO_TICTACTOE);
-//        assert inputTicTacToe != null;
-//        Image imageTicTacToe = new Image(Objects.requireNonNull(getClass().getResource("img/logoLogout.png")).toExternalForm());
-//        buttonMorpion.setVisible(true);
-//        var img = new Image(Objects.requireNonNull(getClass().getResource("/gauncher/frontend/controller/logoLogout.png")).toString(), true);
-//        buttonMorpion.setImage(new Image("/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/logoMorpion.png"));
-//        var scene = buttonMorpion.getScene();
-//        var img = new Image("/frontend/src/main/resources/img/logoMorpion.png");
-//        var img = new Image(inputTicTacToe);
-//        buttonMorpion.setVisible(true);
-//        System.out.println("buttonMorpion = " + buttonMorpion.getImage());
-//        System.out.println("scene = " + scene);0
-//        buttonMorpion.setImage(img);
-//        var img = new Image(getClass().getResourceAsStream(LOGO_TICTACTOE).toString());
-//        buttonMorpion.setImage(img);
+        var init = "-/-";
+        this.chatCompt.setText(init);
+        this.tictactoeCompt.setText(init);
+        this.justePrixCompt.setText(init);
+        this.reversiCompt.setText(init);
+        this.quizCompt.setText(init);
+        this.demineurCompt.setText(init);
+
+        try {
+            this.setList();
+        } catch (UnprocessableViewException e) {
+            e.printStackTrace();
+        }
         pseudoLabel.setText(App.client.getPseudo().get());
     }
 
@@ -82,6 +109,72 @@ public class LauncherController implements Initializable {
 
     @FXML
     void openChat(MouseEvent event) throws UnprocessableViewException {
-        App.setCurrentScene(new ChatView());
+        App.client.println("PLAY chat");
+        try {
+            var response = App.client.readLine();
+            if (response.startsWith("OK")) {
+                log.info(format("%s start to play chat", App.client.getPseudo()));
+                App.setCurrentScene(new ChatView());
+            }
+        } catch (SocketException e) {
+            log.error("Client have been disconnected from the server");
+            App.setCurrentScene(new ConnectionView());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    void openTicTacToe(MouseEvent event) throws UnprocessableViewException {
+        App.client.println("PLAY tictactoe");
+        try {
+            var response = App.client.readLine();
+            if (response.startsWith("OK")) {
+                log.info(format("%s start to play tictactoe", App.client.getPseudo()));
+                App.setCurrentScene(new WorkInprogressView());
+            }
+        } catch (SocketException e) {
+            log.error("Client have been disconnected from the server");
+            App.setCurrentScene(new ConnectionView());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void setList() throws UnprocessableViewException {
+        try {
+            App.client.println("list");
+            var res = App.client.readLine();
+            if (res.startsWith("OK")) {
+                var t = res.split(" ");
+                this.parse(t[2].split(","));
+            }
+        } catch (SocketException e) {
+            log.error("Client have been disconnected from the server");
+            App.setCurrentScene(new ConnectionView());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private void parse(String[] list) {
+        for (int i = 0; i < list.length; i++) {
+            var index = list[i].indexOf("(");
+            var temp = list[i].substring(index+1, list[i].length() - 1);
+            var listPlayer = temp.split("/");
+            if (list[i].startsWith("chat")) {
+                this.chatCompt.setText(listPlayer[0]+"/"+ '\u221E');
+            } else if (list[i].startsWith("tictactoe")) {
+                this.tictactoeCompt.setText(listPlayer[0]+"/"+listPlayer[1]);
+            } else if (list[i].startsWith("demineur")) {
+                this.demineurCompt.setText(listPlayer[0]+"/"+listPlayer[1]);
+            } else if (list[i].startsWith("battlequiz")) {
+                this.quizCompt.setText(listPlayer[0]+"/"+listPlayer[1]);
+            } else if (list[i].startsWith("reversi")) {
+                this.reversiCompt.setText(listPlayer[0]+"/"+listPlayer[1]);
+            } else if (list[i].startsWith("justePrix")) {
+                this.justePrixCompt.setText(listPlayer[0]+"/"+listPlayer[1]);
+            }
+        }
     }
 }
