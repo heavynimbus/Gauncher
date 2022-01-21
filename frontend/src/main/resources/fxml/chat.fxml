@@ -8,6 +8,7 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -26,11 +27,7 @@
       </ScrollPane>
       <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" VBox.vgrow="NEVER">
         <children>
-          <TextArea fx:id="messageBox" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#inputValue" prefHeight="51.0" prefWidth="683.0" promptText="Enter Message..." scaleShape="false" HBox.hgrow="ALWAYS">
-            <font>
-              <Font name="SansSerif Regular" size="14.0" />
-            </font>
-          </TextArea>
+               <TextField fx:id="messageBox" onKeyPressed="#pressEnter" prefHeight="46.0" prefWidth="683.0" promptText="Entrez un message..." />
           <Button fx:id="buttonSend" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="43.0" prefWidth="140.0" scaleShape="false" style="-fx-background-color: ffc90e;" text="Send" textAlignment="CENTER" HBox.hgrow="NEVER" />
         </children>
       </HBox>
@@ -66,16 +63,14 @@
         </ListView>
             <Pane prefHeight="200.0" prefWidth="200.0">
                <children>
-                  <ImageView fitHeight="90.0" fitWidth="64.0" layoutX="24.0" layoutY="23.0" onMouseClicked="#previousView" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="64.0" fitWidth="73.0" layoutX="77.0" layoutY="16.0" onMouseClicked="#previousView" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/home/llamorille/Documents/ISEN-Lille/Projets/Gauncher/frontend/src/main/resources/img/back_arrow_left_icon.png" />
+                        <Image url="/img/logoLogout.png" />
                      </image>
                      <cursor>
                         <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </ImageView>
-               </children>
-            </Pane>
+                     </cursor></ImageView>
+               </children></Pane>
       </children>
     </VBox>
   </left>
