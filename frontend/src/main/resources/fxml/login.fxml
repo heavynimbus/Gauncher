@@ -24,7 +24,7 @@
             </Text>
          </children>
       </Pane>
-      <TextField fx:id="userInput" layoutX="369.0" layoutY="114.0" onKeyPressed="#inputValue" />
+      <TextField fx:id="userInput" layoutX="369.0" layoutY="114.0" onKeyPressed="#inputValueUser" />
       <Text fill="#ffc90e" layoutX="103.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe : ">
          <font>
             <Font name="System Bold" size="20.0" />
@@ -40,7 +40,7 @@
             <Font name="System Bold" size="13.0" />
          </font>
       </Button>
-      <PasswordField fx:id="passwordInput" layoutX="369.0" layoutY="176.0" onKeyPressed="#inputValue" />
+      <PasswordField fx:id="passwordInput" layoutX="369.0" layoutY="176.0" onKeyPressed="#inputValuePass" />
       <Text fill="#ffc90e" layoutX="193.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SE CONNECTER">
          <font>
             <Font name="System Bold" size="25.0" />

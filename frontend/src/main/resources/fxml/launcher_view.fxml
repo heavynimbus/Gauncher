@@ -46,7 +46,19 @@
                 </Pane>
                 <Pane prefHeight="200.0" HBox.hgrow="ALWAYS">
                     <children>
-                        <ImageView fx:id="logoGauncher" fitHeight="120.0" fitWidth="200.0" layoutX="411.0"
+                        <ImageView fitHeight="65.0" fitWidth="66.0" layoutX="37.0" layoutY="40.0" onMouseClicked="#reload" pickOnBounds="true" preserveRatio="true">
+                            <image>
+                                <Image url="/img/reaload.png" />
+                            </image>
+                            <cursor>
+                                <Cursor fx:constant="HAND" />
+                            </cursor>
+                        </ImageView>
+                    </children>
+                </Pane>
+                <Pane prefHeight="200.0" HBox.hgrow="ALWAYS">
+                    <children>
+                        <ImageView fx:id="logoGauncher" fitHeight="120.0" fitWidth="200.0" layoutX="256.0"
                                    layoutY="20.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="/img/logoGauncher.png"/>
@@ -91,12 +103,13 @@
                                 <Image url="/img/logoMorpion.png"/>
                             </image>
                         </ImageView>
-                        <Text fx:id="tictactoeCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/5" textAlignment="CENTER">
+                        <Text fx:id="tictactoeCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/5"
+                              textAlignment="CENTER">
                             <font>
-                                <Font name="Carlito" size="34.0" />
+                                <Font name="Carlito" size="34.0"/>
                             </font>
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
                         </Text>
                     </children>
@@ -124,12 +137,13 @@
                                 <Cursor fx:constant="HAND"/>
                             </cursor>
                         </ImageView>
-                        <Text fx:id="reversiCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2" textAlignment="CENTER">
+                        <Text fx:id="reversiCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2"
+                              textAlignment="CENTER">
                             <font>
-                                <Font name="Carlito" size="34.0" />
+                                <Font name="Carlito" size="34.0"/>
                             </font>
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
                         </Text>
                     </children>
@@ -155,12 +169,13 @@
                                 <Cursor fx:constant="HAND"/>
                             </cursor>
                         </ImageView>
-                        <Text fx:id="quizCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2" textAlignment="CENTER">
+                        <Text fx:id="quizCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2"
+                              textAlignment="CENTER">
                             <font>
-                                <Font name="Carlito" size="34.0" />
+                                <Font name="Carlito" size="34.0"/>
                             </font>
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
                         </Text>
                     </children>
@@ -188,12 +203,13 @@
                                 <Cursor fx:constant="HAND"/>
                             </cursor>
                         </ImageView>
-                        <Text fx:id="demineurCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2" textAlignment="CENTER">
+                        <Text fx:id="demineurCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2"
+                              textAlignment="CENTER">
                             <font>
-                                <Font name="Carlito" size="34.0" />
+                                <Font name="Carlito" size="34.0"/>
                             </font>
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
                         </Text>
                     </children>
@@ -218,12 +234,13 @@
                                 <Cursor fx:constant="HAND"/>
                             </cursor>
                         </ImageView>
-                        <Text fx:id="justePrixCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2" textAlignment="CENTER">
+                        <Text fx:id="justePrixCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/2"
+                              textAlignment="CENTER">
                             <font>
-                                <Font name="Carlito" size="34.0" />
+                                <Font name="Carlito" size="34.0"/>
                             </font>
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
                         </Text>
                     </children>
@@ -249,12 +266,13 @@
                                 <Cursor fx:constant="HAND"/>
                             </cursor>
                         </ImageView>
-                        <Text fx:id="chatCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/..." textAlignment="CENTER">
+                        <Text fx:id="chatCompt" fill="#ffc90e" strokeType="OUTSIDE" strokeWidth="0.0" text="0/..."
+                              textAlignment="CENTER">
                             <font>
-                                <Font name="Carlito" size="34.0" />
+                                <Font name="Carlito" size="34.0"/>
                             </font>
                             <VBox.margin>
-                                <Insets top="10.0" />
+                                <Insets top="10.0"/>
                             </VBox.margin>
                         </Text>
                     </children>

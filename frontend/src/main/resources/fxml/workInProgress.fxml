@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,8 +16,11 @@
       </Text>
       <ImageView fitHeight="92.0" fitWidth="101.0" layoutX="254.0" layoutY="257.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="/img/logoLogout.png" />
+            <Image url="@../img/logoLogout.png" />
          </image>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </ImageView>
    </children>
 </AnchorPane>

@@ -43,6 +43,13 @@ public class LoginController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         errorMessage.setVisible(false);
         userInput.setOnKeyPressed(key -> {
+           if (key.getCode().equals(KeyCode.SPACE)) {
+               this.errorMessage.setVisible(true);
+               this.userInput.setText("");
+               this.passwordInput.setText("");
+           }
+        });
+        userInput.setOnKeyPressed(key -> {
             if (key.getCode().equals(KeyCode.TAB)) {
                 passwordInput.requestFocus();
             }
@@ -84,12 +91,28 @@ public class LoginController implements Initializable {
         }
     }
 
+
     @FXML
-    void inputValue(KeyEvent event) throws UnprocessableViewException {
-        var code = event.getCode();
+    void inputValueUser(KeyEvent event) throws UnprocessableViewException {
+        /*var code = event.getCode();
+        if (code.equals(KeyCode.SPACE)) {
+            System.out.println("LoginController.inputValue");
+            this.errorMessage.setVisible(true);
+            this.userInput.clear();
+            this.passwordInput.clear();
+        }
         if (code.equals(KeyCode.ENTER)) {
             this.login();
-        }
+        }*/
+        System.out.println("LoginController.inputValueUser");
     }
 
+    @FXML
+    void inputValuePass(KeyEvent event) throws UnprocessableViewException {
+        this.inputValueUser(event);
+    }
+
+    private void setErrorMessage(String message) {
+        this.errorMessage.setVisible(true);
+    }
 }

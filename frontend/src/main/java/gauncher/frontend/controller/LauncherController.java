@@ -126,17 +126,27 @@ public class LauncherController implements Initializable {
 
     @FXML
     void openTicTacToe(MouseEvent event) throws UnprocessableViewException {
-        App.client.println("PLAY tictactoe");
+//        App.client.println("PLAY tictactoe");
+//        try {
+//            var response = App.client.readLine();
+//            if (response.startsWith("OK")) {
+//                log.info(format("%s start to play tictactoe", App.client.getPseudo()));
+//                App.setCurrentScene(new WorkInprogressView());
+//            }
+//        } catch (SocketException e) {
+//            log.error("Client have been disconnected from the server");
+//            App.setCurrentScene(new ConnectionView());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+        App.setCurrentScene(new WorkInprogressView());
+    }
+
+    @FXML
+    void reload() {
         try {
-            var response = App.client.readLine();
-            if (response.startsWith("OK")) {
-                log.info(format("%s start to play tictactoe", App.client.getPseudo()));
-                App.setCurrentScene(new WorkInprogressView());
-            }
-        } catch (SocketException e) {
-            log.error("Client have been disconnected from the server");
-            App.setCurrentScene(new ConnectionView());
-        } catch (IOException e) {
+            this.setList();
+        } catch (UnprocessableViewException e) {
             e.printStackTrace();
         }
     }

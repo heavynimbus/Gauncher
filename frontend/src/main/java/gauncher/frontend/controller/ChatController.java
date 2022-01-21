@@ -46,15 +46,18 @@ public class ChatController implements Initializable {
     @FXML
     public Label usernameLabel;
 
+    private Thread listenThread;
+
     @FXML
     void sendButtonAction() {
-        App.client.println(messageBox.getText());
-        messageBox.setText("");
+        if (!messageBox.getText().startsWith("/quit")) {
+            App.client.println(messageBox.getText());
+            messageBox.setText("");
+        }
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        App.client.println("Enter Chat");
         messages.setText("");
         messageBox.setText("");
         usernameLabel.setText(App.client.getPseudo().get());
@@ -63,12 +66,11 @@ public class ChatController implements Initializable {
         messages.setStyle("-fx-opacity: 1.0;");
         userList.setDisable(true);
         userList.setStyle("-fx-opacity: 1.0;");
-        var t = new Thread(
+        this.listenThread = new Thread(
                 () -> {
                     try {
                         while (App.isShowing()) {
                             String line = App.client.readLine();
-                            System.out.println("line = " + line);
                             if (!line.startsWith("SERVER:")) {
                                 if(line.endsWith("left the chat") || line.endsWith("joined the chat"))
                                 {
@@ -77,12 +79,9 @@ public class ChatController implements Initializable {
                                 }
                                 messages.setText(messages.getText() + "\n" + line);
                             }else{
-                                System.out.println("set list");
                                 Platform.runLater(()->{
                                     var split = line.split(" ");
                                     var userOnline = split[1].split(",");
-                                    System.out.println("userOnline = " + Arrays.toString(userOnline));
-                                    System.out.println("length = " + userOnline.length);
                                     onlineCountLabel.setText(String.valueOf(userOnline.length));
                                     userList.getItems().clear();//.forEach(userList.getItems()::remove);
                                     for (int i = 0; i< userOnline.length; i++) {
@@ -97,9 +96,9 @@ public class ChatController implements Initializable {
                     }
                 });
         App.setOnCloseRequest((req)->{
-            t.interrupt();
+            this.listenThread.interrupt();
         });
-        t.start();
+        this.listenThread.start();
     }
 
     @FXML
@@ -112,8 +111,8 @@ public class ChatController implements Initializable {
 
     @FXML
     void previousView(MouseEvent event) throws UnprocessableViewException {
-        System.out.println("ici");
         App.client.println("/quit");
+        this.listenThread.interrupt();
         App.setCurrentScene(new LauncherView());
     }
 

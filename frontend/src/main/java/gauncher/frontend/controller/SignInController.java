@@ -42,7 +42,6 @@ public class SignInController implements Initializable {
 
     @FXML
     void signIn() throws UnprocessableViewException {
-        System.out.println("ICIIII");
         var pseudoValue = this.pseudo.getCharacters().toString();
         var passwordValue = this.password.getCharacters().toString();
         var confirmPasswordValue = this.confirmPassword.getCharacters().toString();
@@ -77,7 +76,6 @@ public class SignInController implements Initializable {
     @FXML
     void inputValue(KeyEvent event) throws UnprocessableViewException {
         var code = event.getCode();
-        System.out.println("code = " + code);
         if (code.equals(KeyCode.ENTER)) {
             this.signIn();
         }
