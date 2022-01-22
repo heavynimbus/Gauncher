@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="551.0" prefWidth="600.0" style="-fx-background-color: #3d5b85;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gauncher.frontend.controller.LoginController">
+   <children>
+      <Text fill="#ffc90e" layoutX="57.0" layoutY="133.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom d'utilisateur : ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Pane fx:id="errorMessage" layoutX="-5.0" layoutY="459.0" prefHeight="65.0" prefWidth="610.0" style="-fx-background-color: white;">
+         <children>
+            <Text fill="#fa4848" layoutX="57.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom d'utilisateur ou mot de passe incorrect">
+               <font>
+                  <Font name="System Bold" size="20.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
+      <TextField fx:id="userInput" layoutX="369.0" layoutY="114.0" onKeyPressed="#inputValueUser" />
+      <Text fill="#ffc90e" layoutX="103.0" layoutY="195.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mot de passe : ">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Button fx:id="connectButton" layoutX="225.0" layoutY="276.0" mnemonicParsing="false" onAction="#login" prefHeight="40.0" prefWidth="150.0" text="VALIDER" textFill="#7092be">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <Button fx:id="createButton" layoutX="204.0" layoutY="370.0" mnemonicParsing="false" onAction="#signIn" prefHeight="40.0" prefWidth="192.0" text="CREER UN COMPTE" textFill="#7092be">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Button>
+      <PasswordField fx:id="passwordInput" layoutX="369.0" layoutY="176.0" onKeyPressed="#inputValuePass" />
+      <Text fill="#ffc90e" layoutX="193.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SE CONNECTER">
+         <font>
+            <Font name="System Bold" size="25.0" />
+         </font>
+      </Text>
+   </children>
+</AnchorPane>

@@ -5,8 +5,11 @@ import gauncher.frontend.exception.UnprocessableViewException;
 import gauncher.frontend.logging.Logger;
 import gauncher.frontend.view.ConnectionView;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+import javafx.stage.WindowEvent;
 
 /** JavaFX App */
 public class App extends Application {
@@ -16,6 +19,10 @@ public class App extends Application {
 
   public static void setCurrentScene(Scene scene) {
     currentStage.setScene(scene);
+  }
+
+  public static void setOnCloseRequest(EventHandler<WindowEvent> handler){
+    currentStage.setOnCloseRequest(handler);
   }
   public static boolean isShowing(){
     return currentStage.isShowing();

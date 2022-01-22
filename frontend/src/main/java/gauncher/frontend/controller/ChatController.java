@@ -1,128 +1,119 @@
 package gauncher.frontend.controller;
 
 import gauncher.frontend.App;
+import gauncher.frontend.exception.UnprocessableViewException;
 import gauncher.frontend.logging.Logger;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
-import javafx.beans.property.SimpleStringProperty;
+
+import gauncher.frontend.view.LauncherView;
+import javafx.application.Platform;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 
 public class ChatController implements Initializable {
 
-  public Logger log = new Logger("ChatController");
+    public Logger log = new Logger("ChatController");
 
-  @FXML public TextArea messages;
+    @FXML
+    public TextArea messages;
 
-  private SimpleStringProperty messageValue;
+    @FXML
+    public BorderPane borderPane;
 
-  @FXML public BorderPane borderPane;
+    @FXML
+    public TextField messageBox;
 
-  @FXML private Button buttonSend;
+    @FXML
+    private Label onlineCountLabel;
 
-  @FXML private ListView<?> chatPane;
+    @FXML
+    private HBox onlineUsersHbox;
 
-  @FXML public TextArea messageBox;
+    @FXML
+    private ListView<String> userList;
 
-  public SimpleStringProperty messageBoxValue;
+    @FXML
+    public Label usernameLabel;
 
-  @FXML private Label onlineCountLabel;
-  private SimpleStringProperty onlineCountLabelValue;
+    private Thread listenThread;
 
-  @FXML private HBox onlineUsersHbox;
-
-  @FXML private ListView<?> userList;
-
-  @FXML public Label usernameLabel;
-
-  public SimpleStringProperty usernameLabelValue;
-
-  @FXML
-  void sendButtonAction() {
-    App.client.println(messageBoxValue.get());
-    messageBoxValue.set("");
-  }
-
-  private boolean setOnlineCountLabelValue(String receivedMessage) {
-    try {
-      if (receivedMessage.startsWith("Online Users:")) {
-        onlineCountLabelValue.set(receivedMessage.replace("Online Users:", ""));
-        System.out.println("=" + onlineCountLabelValue.get());
-        return true;
-      } else if (receivedMessage.endsWith(" joined the chat")
-          && !receivedMessage.startsWith(App.client.getPseudo().get())) {
-        onlineCountLabelValue.set(
-            String.valueOf(Integer.parseInt(onlineCountLabelValue.get()) + 1));
-        System.out.println("+1:" + onlineCountLabelValue.get());
-        return true;
-      } else if (receivedMessage.endsWith(" left the chat")) {
-        onlineCountLabelValue.set(
-            String.valueOf(Integer.parseInt(onlineCountLabelValue.get()) - 1));
-        System.out.println("-1:" + onlineCountLabelValue.get());
-        return true;
-      }
-    } catch (NumberFormatException e) {
-      return false;
-    }
-    return false;
-  }
-
-  @Override
-  public void initialize(URL url, ResourceBundle resourceBundle) {
-    App.client.println("Enter Chat");
-    messageValue = new SimpleStringProperty("");
-    messages.textProperty().bind(messageValue);
-    messageBoxValue = new SimpleStringProperty("");
-    messageBox.textProperty().bind(messageBoxValue);
-    usernameLabel.textProperty().bind(App.client.getPseudo());
-    onlineCountLabelValue = new SimpleStringProperty("");
-    onlineCountLabel.textProperty().bind(onlineCountLabelValue);
-    new Thread(
-            () -> {
-              try {
-                while (App.isShowing()) {
-                  String line = App.client.readLine();
-                  if (!setOnlineCountLabelValue(line)) {
-                    log.debug(line);
-                    if (messageValue.get().length() > 0)
-                      messageValue.set(messageValue.get() + "\n" + line);
-                  } else messageValue.set(line);
-                }
-              } catch (IOException e) {
-                e.printStackTrace();
-              }
-            })
-        .start();
-  }
-
-  @FXML
-  public void inputValue(KeyEvent keyEvent) {
-    var value = messageBoxValue.get();
-    var code = keyEvent.getCode();
-
-    if (code.equals(KeyCode.BACK_SPACE)) {
-      if (!messageBoxValue.get().isEmpty()) {
-        messageBoxValue.set(messageBoxValue.get().substring(0, messageBoxValue.get().length() - 1));
-        messageBox.positionCaret(messageBoxValue.get().length());
-      }
-    } else if (keyEvent.getText() != null) {
-      messageBoxValue.set(value + keyEvent.getText());
-      messageBox.positionCaret(messageBoxValue.get().length());
+    @FXML
+    void sendButtonAction() {
+        if (!messageBox.getText().startsWith("/quit")) {
+            App.client.println(messageBox.getText());
+            messageBox.setText("");
+        }
     }
 
-    if (code.equals(KeyCode.ENTER) && keyEvent.getText() != null) {
-      App.client.println(value);
-      messageBoxValue.set("");
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        messages.setText("");
+        messageBox.setText("");
+        usernameLabel.setText(App.client.getPseudo().get());
+        onlineCountLabel.setText(String.valueOf(0));
+        messages.setDisable(true);
+        messages.setStyle("-fx-opacity: 1.0;");
+        userList.setDisable(true);
+        userList.setStyle("-fx-opacity: 1.0;");
+        this.listenThread = new Thread(
+                () -> {
+                    try {
+                        while (App.isShowing()) {
+                            String line = App.client.readLine();
+                            if (!line.startsWith("SERVER:")) {
+                                if(line.endsWith("left the chat") || line.endsWith("joined the chat"))
+                                {
+                                    System.out.println("new client -> Send /list");
+                                    App.client.println("/list");
+                                }
+                                messages.setText(messages.getText() + "\n" + line);
+                            }else{
+                                Platform.runLater(()->{
+                                    var split = line.split(" ");
+                                    var userOnline = split[1].split(",");
+                                    onlineCountLabel.setText(String.valueOf(userOnline.length));
+                                    userList.getItems().clear();//.forEach(userList.getItems()::remove);
+                                    for (int i = 0; i< userOnline.length; i++) {
+                                        userList.getItems().add(userOnline[i]);
+                                    }
+                                });
+
+                            }
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+        App.setOnCloseRequest((req)->{
+            this.listenThread.interrupt();
+        });
+        this.listenThread.start();
     }
-  }
+
+    @FXML
+    void pressEnter(KeyEvent event) {
+        var code = event.getCode();
+        if (code.equals(KeyCode.ENTER)) {
+            sendButtonAction();
+        }
+    }
+
+    @FXML
+    void previousView(MouseEvent event) throws UnprocessableViewException {
+        App.client.println("/quit");
+        this.listenThread.interrupt();
+        App.setCurrentScene(new LauncherView());
+    }
+
 }
-// (code.isDigitKey() || code.isLetterKey() || code.isWhitespaceKey()) && value != null) {

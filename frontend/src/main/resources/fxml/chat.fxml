@@ -2,101 +2,94 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.geometry.Point3D?>
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
-<BorderPane fx:id="borderPane" maxHeight="620.0" maxWidth="1040.0" prefHeight="620.0"
-  prefWidth="1040.0" xmlns="http://javafx.com/javafx/13" xmlns:fx="http://javafx.com/fxml/1"
-  fx:controller="gauncher.frontend.controller.ChatController">
+
+<BorderPane fx:id="borderPane" maxHeight="620.0" maxWidth="1040.0" prefHeight="620.0" prefWidth="1040.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gauncher.frontend.controller.ChatController">
   <center>
     <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308">
-      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER"
-        maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true"
-        prefHeight="496.0" vbarPolicy="ALWAYS" vmin="1.0" vvalue="1.0" VBox.vgrow="ALWAYS">
+      <ScrollPane fitToHeight="true" fitToWidth="true" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" pannable="true" prefHeight="496.0" vbarPolicy="ALWAYS" vmin="1.0" vvalue="1.0" VBox.vgrow="ALWAYS">
         <content>
-          <TextArea fx:id="messages" prefHeight="200.0" prefWidth="200.0"/>
+          <TextArea fx:id="messages" prefHeight="200.0" prefWidth="200.0" />
         </content>
       </ScrollPane>
-      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-        minHeight="-Infinity" minWidth="100.0" VBox.vgrow="NEVER">
+      <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0" VBox.vgrow="NEVER">
         <children>
-          <TextArea fx:id="messageBox" maxHeight="1.7976931348623157E308"
-            maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="100.0"
-            nodeOrientation="LEFT_TO_RIGHT" onKeyPressed="#inputValue" prefHeight="51.0"
-            prefWidth="683.0" promptText="Enter Message..." scaleShape="false" HBox.hgrow="ALWAYS">
-            <font>
-              <Font name="SansSerif Regular" size="14.0"/>
-            </font>
-          </TextArea>
-          <Button fx:id="buttonSend" alignment="CENTER" maxHeight="1.7976931348623157E308"
-            maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity"
-            mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="43.0" prefWidth="140.0"
-            scaleShape="false" style="-fx-background-color: black;" text="Send"
-            textAlignment="CENTER" textFill="WHITE" HBox.hgrow="NEVER"/>
+               <TextField fx:id="messageBox" onKeyPressed="#pressEnter" prefHeight="46.0" prefWidth="683.0" promptText="Entrez un message..." />
+          <Button fx:id="buttonSend" alignment="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#sendButtonAction" prefHeight="43.0" prefWidth="140.0" scaleShape="false" style="-fx-background-color: ffc90e;" text="Send" textAlignment="CENTER" HBox.hgrow="NEVER" />
         </children>
       </HBox>
     </VBox>
   </center>
   <left>
-    <VBox maxHeight="1.7976931348623157E308" style="-fx-background-color: #014f86;"
-      BorderPane.alignment="CENTER">
+    <VBox maxHeight="1.7976931348623157E308" style="-fx-background-color: #014f86;" BorderPane.alignment="CENTER">
       <children>
-        <HBox fx:id="onlineUsersHbox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0"
-          prefWidth="217.0">
+        <HBox fx:id="onlineUsersHbox" minHeight="-Infinity" minWidth="-Infinity" prefHeight="50.0" prefWidth="217.0">
           <children>
-            <Label alignment="CENTER" prefHeight="50.0" prefWidth="124.0" text="Online Users :"
-              textFill="#61a5c2" textOverrun="CLIP">
+            <Label alignment="CENTER" prefHeight="50.0" prefWidth="124.0" text="Online Users :" textFill="#ffc90e" textOverrun="CLIP">
               <font>
-                <Font name="Comic Sans MS" size="18.0"/>
+                <Font name="Comic Sans MS" size="18.0" />
               </font>
               <padding>
-                <Insets left="10.0"/>
+                <Insets left="10.0" />
               </padding>
               <opaqueInsets>
-                <Insets bottom="10.0"/>
+                <Insets bottom="10.0" />
               </opaqueInsets>
             </Label>
-            <Label fx:id="onlineCountLabel" alignment="CENTER" contentDisplay="TOP"
-              prefHeight="48.0" prefWidth="94.0" text="0" textFill="#61a5c2">
+            <Label fx:id="onlineCountLabel" alignment="CENTER" contentDisplay="TOP" prefHeight="48.0" prefWidth="94.0" text="0" textFill="#ffc90e">
               <opaqueInsets>
-                <Insets/>
+                <Insets />
               </opaqueInsets>
               <font>
-                <Font name="Comic Sans MS" size="18.0"/>
+                <Font name="Comic Sans MS" size="18.0" />
               </font>
             </Label>
           </children>
         </HBox>
-        <ListView fx:id="userList" focusTraversable="false" maxHeight="1.7976931348623157E308"
-          prefHeight="495.0" prefWidth="217.0"
-          style="-fx-border-image-width: 0; -fx-background-color: #014f86;">
+        <ListView fx:id="userList" focusTraversable="false" maxHeight="1.7976931348623157E308" prefHeight="495.0" prefWidth="217.0" style="-fx-border-image-width: 0; -fx-background-color: #014f86;">
         </ListView>
+            <Pane prefHeight="200.0" prefWidth="200.0">
+               <children>
+                  <ImageView fitHeight="64.0" fitWidth="73.0" layoutX="77.0" layoutY="16.0" onMouseClicked="#previousView" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="/img/logoLogout.png" />
+                     </image>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></ImageView>
+               </children></Pane>
       </children>
     </VBox>
   </left>
   <top>
-    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308"
-      style="-fx-background-color: #014f86;" BorderPane.alignment="CENTER">
+    <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" style="-fx-background-color: #014f86;" BorderPane.alignment="CENTER">
       <left>
         <HBox prefWidth="259.0" BorderPane.alignment="CENTER">
           <children>
             <VBox>
               <HBox.margin>
-                <Insets left="10.0" top="30.0"/>
+                <Insets left="10.0" top="30.0" />
               </HBox.margin>
               <children>
-                <Label fx:id="usernameLabel" textFill="#89c2d9">
+                <Label fx:id="usernameLabel" textFill="#ffc90e">
                   <font>
-                    <Font name="Comic Sans MS" size="30.0"/>
+                    <Font name="Comic Sans MS" size="30.0" />
                   </font>
                   <VBox.margin>
-                    <Insets bottom="20.0"/>
+                    <Insets bottom="20.0" />
                   </VBox.margin>
                 </Label>
               </children>
@@ -107,6 +100,6 @@
     </BorderPane>
   </top>
   <rotationAxis>
-    <Point3D/>
+    <Point3D />
   </rotationAxis>
 </BorderPane>
