@@ -129,7 +129,7 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonReversi" fx:id="buttonReversi" fitHeight="150.0" fitWidth="200.0"
-                                   pickOnBounds="true" preserveRatio="true">
+                                   pickOnBounds="true" preserveRatio="true" onMouseClicked="#openReversi">
                             <image>
                                 <Image url="/img/logoReversi.png"/>
                             </image>
@@ -161,7 +161,7 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonBattleQuiz" fx:id="buttonBattleQuiz" fitHeight="150.0" fitWidth="200.0"
-                                   pickOnBounds="true" preserveRatio="true">
+                                   pickOnBounds="true" preserveRatio="true" onMouseClicked="#openBattle">
                             <image>
                                 <Image url="/img/logoQuizz.png"/>
                             </image>
@@ -195,7 +195,7 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonDemineur" fx:id="buttonDemineur" fitHeight="150.0" fitWidth="200.0"
-                                   pickOnBounds="true" preserveRatio="true">
+                                   pickOnBounds="true" preserveRatio="true" onMouseClicked="#openDemineur">
                             <image>
                                 <Image url="/img/logoDemineur.png"/>
                             </image>
@@ -226,7 +226,7 @@
                             </VBox.margin>
                         </Text>
                         <ImageView id="buttonJustePrix" fx:id="buttonJustePrix" fitHeight="150.0" fitWidth="200.0"
-                                   pickOnBounds="true" preserveRatio="true">
+                                   pickOnBounds="true" preserveRatio="true" onMouseClicked="#openJustePrix">
                             <image>
                                 <Image url="/img/logoJustePrix.png"/>
                             </image>

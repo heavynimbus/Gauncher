@@ -143,6 +143,26 @@ public class LauncherController implements Initializable {
     }
 
     @FXML
+    void openReversi(MouseEvent event) throws UnprocessableViewException{
+        App.setCurrentScene(new WorkInprogressView());
+    }
+
+    @FXML
+    void openBattle(MouseEvent event) throws UnprocessableViewException {
+        App.setCurrentScene(new WorkInprogressView());
+    }
+
+    @FXML
+    void openDemineur(MouseEvent event) throws UnprocessableViewException {
+        App.setCurrentScene(new WorkInprogressView());
+    }
+
+    @FXML
+    void openJustePrix(MouseEvent event) throws UnprocessableViewException {
+        App.setCurrentScene(new WorkInprogressView());
+    }
+
+    @FXML
     void reload() {
         try {
             this.setList();

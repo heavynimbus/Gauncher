@@ -94,7 +94,7 @@ public class LoginController implements Initializable {
 
     @FXML
     void inputValueUser(KeyEvent event) throws UnprocessableViewException {
-        /*var code = event.getCode();
+        var code = event.getCode();
         if (code.equals(KeyCode.SPACE)) {
             System.out.println("LoginController.inputValue");
             this.errorMessage.setVisible(true);
@@ -103,8 +103,8 @@ public class LoginController implements Initializable {
         }
         if (code.equals(KeyCode.ENTER)) {
             this.login();
-        }*/
-        System.out.println("LoginController.inputValueUser");
+        }
+        /*System.out.println("LoginController.inputValueUser");*/
     }
 
     @FXML
