@@ -7,7 +7,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -34,7 +33,7 @@
             <Font size="25.0" />
          </font>
       </Label>
-      <GridPane layoutX="300.0" layoutY="148.0" prefHeight="543.0" prefWidth="506.0">
+      <GridPane fx:id="grid" alignment="CENTER" layoutX="325.0" layoutY="145.0" prefHeight="543.0" prefWidth="506.0" style="-fx-alignment: center;">
         <columnConstraints>
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -46,79 +45,51 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <Text fx:id="case1" layoutX="43.0" layoutY="136.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1">
-               <children>
-                  <Text fx:id="case2" layoutX="34.0" layoutY="131.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2">
-               <children>
-                  <Text fx:id="case3" layoutX="34.0" layoutY="131.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1">
-               <children>
-                  <Text fx:id="case4" layoutX="34.0" layoutY="130.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
-            <Pane fx:id="grid" prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <children>
-                  <Text fx:id="case5" layoutX="34.0" layoutY="130.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children>
-            </Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
-               <children>
-                  <Text fx:id="case6" layoutX="34.0" layoutY="131.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="2">
-               <children>
-                  <Text fx:id="case7" layoutX="34.0" layoutY="131.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
-               <children>
-                  <Text fx:id="case8" layoutX="34.0" layoutY="131.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
-            <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
-               <children>
-                  <Text fx:id="case9" layoutX="34.0" layoutY="131.0" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" wrappingWidth="100.693359375">
-                     <font>
-                        <Font name="System Bold" size="150.0" />
-                     </font>
-                  </Text>
-               </children></Pane>
+            <Text fx:id="case1" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case2" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case4" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case3" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case5" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case6" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case7" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case8" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
+            <Text fx:id="case9" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font name="System Bold" size="150.0" />
+               </font>
+            </Text>
          </children>
       </GridPane>
       <Label fx:id="labelVS" layoutX="58.0" layoutY="34.0" prefHeight="48.0" prefWidth="242.0" text="Player" textFill="#ffc90e">

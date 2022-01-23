@@ -6,13 +6,18 @@ import javafx.event.ActionEvent;
 import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
+import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.TilePane;
 import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.ResourceBundle;
 
 public class TictactoeController implements Initializable {
@@ -53,7 +58,7 @@ public class TictactoeController implements Initializable {
     private Text case9;
 
     @FXML
-    private Pane grid;
+    private GridPane grid;
 
     @FXML
     private Label playing;
@@ -66,6 +71,7 @@ public class TictactoeController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.initGame();
+        setGameBoard("");
         System.out.println("test2");
         this.listenThread = new Thread(
                 () -> {
@@ -90,7 +96,7 @@ public class TictactoeController implements Initializable {
                         e.printStackTrace();
                     }
                 });
-        App.setOnCloseRequest((req)->{
+        App.setOnCloseRequest((req) -> {
             this.listenThread.interrupt();
         });
         this.listenThread.start();
@@ -104,7 +110,6 @@ public class TictactoeController implements Initializable {
     @FXML
     void input(MouseEvent event) {
         var caseSelected = event.getTarget();
-        System.out.println("player = " + player);
         if (testInput(caseSelected, "case1")) {
             this.case1.setText(player);
             this.playing.setText("Au joueur adverse de jouer");
@@ -125,6 +130,7 @@ public class TictactoeController implements Initializable {
         } else if (testInput(caseSelected, "case9")) {
             this.case9.setText(player);
         }
+        setGameBoard(gameBoard);
     }
 
     private boolean testInput(EventTarget event, String caseTested) {
@@ -132,7 +138,7 @@ public class TictactoeController implements Initializable {
     }
 
     private void initGame() {
-        App.client.println("READY CROSS");
+        this.player = x;
         this.case1.setText("");
         this.case2.setText("");
         this.case3.setText("");
@@ -145,7 +151,23 @@ public class TictactoeController implements Initializable {
         this.gameBoard = ".........";
     }
 
-    private void setGameBoard() {
-        App.client.println(this.gameBoard);
+    private void setGameBoard(String board) {
+        board = ".OX.XX.OO";
+        var list = board.split("");
+        for(int i=0; i<9; i++) {
+            if (list[i].equals(".")) {
+                list[i] = "";
+            }
+        }
+
+        this.case1.setText(list[0]);
+        this.case2.setText(list[1]);
+        this.case3.setText(list[2]);
+        this.case4.setText(list[3]);
+        this.case5.setText(list[4]);
+        this.case6.setText(list[5]);
+        this.case7.setText(list[6]);
+        this.case8.setText(list[7]);
+        this.case9.setText(list[8]);
     }
 }
