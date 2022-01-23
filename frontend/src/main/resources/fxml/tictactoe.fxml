@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -19,11 +20,6 @@
             <Image url="/img/tictactoe.png" />
          </image>
       </ImageView>
-      <Button layoutX="897.0" layoutY="381.0" mnemonicParsing="false" onAction="#confirm" prefHeight="70.0" prefWidth="175.0" style="-fx-background-color: white;" text="Valider" textFill="#3d5b85">
-         <font>
-            <Font size="22.0" />
-         </font>
-      </Button>
       <Label fx:id="seconde" layoutX="825.0" layoutY="316.0" prefHeight="36.0" prefWidth="319.0" textFill="#ffc70f">
          <font>
             <Font size="25.0" />
@@ -41,47 +37,47 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Text fx:id="case1" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375">
+            <Text fx:id="case1" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case2" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1">
+            <Text fx:id="case2" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case3" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2">
+            <Text fx:id="case3" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case4" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.rowIndex="1">
+            <Text fx:id="case4" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case5" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1" GridPane.rowIndex="1">
+            <Text fx:id="case5" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="o" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case6" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2" GridPane.rowIndex="1">
+            <Text fx:id="case6" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2" GridPane.rowIndex="1">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case7" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.rowIndex="2">
+            <Text fx:id="case7" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case8" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1" GridPane.rowIndex="2">
+            <Text fx:id="case8" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="1" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
             </Text>
-            <Text fx:id="case9" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2" GridPane.rowIndex="2">
+            <Text fx:id="case9" fill="#3d5b85" onMouseClicked="#input" strokeType="OUTSIDE" strokeWidth="0.0" text="x" textAlignment="CENTER" wrappingWidth="100.693359375" GridPane.columnIndex="2" GridPane.rowIndex="2">
                <font>
                   <Font name="System Bold" size="150.0" />
                </font>
@@ -102,5 +98,19 @@
             </Text>
          </children>
       </Pane>
+      <Pane layoutX="885.0" layoutY="334.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #7092BE;" />
+      <Text fx:id="winning" fill="#ffc90e" layoutX="325.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TEST" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="28.0" />
+         </font>
+      </Text>
+      <Button fx:id="backButton" layoutX="949.0" layoutY="603.0" mnemonicParsing="false" onAction="#endGame" prefHeight="48.0" prefWidth="123.0" style="-fx-background-color: white;" text="RETOUR" textFill="#3d5b85">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>

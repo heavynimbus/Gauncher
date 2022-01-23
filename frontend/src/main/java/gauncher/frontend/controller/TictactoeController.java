@@ -1,13 +1,16 @@
 package gauncher.frontend.controller;
 
 import gauncher.frontend.App;
+import gauncher.frontend.exception.UnprocessableViewException;
 import gauncher.frontend.logging.Logger;
+import gauncher.frontend.view.LauncherView;
 import javafx.event.ActionEvent;
 import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -66,13 +69,16 @@ public class TictactoeController implements Initializable {
     @FXML
     private Label seconde;
 
+    @FXML
+    private Text winning;
+
+
     private Thread listenThread;
     private int isPlaying;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.initGame();
-        System.out.println("Avant Thread");
         this.listenThread = new Thread(
                 () -> {
                     try {
@@ -84,7 +90,6 @@ public class TictactoeController implements Initializable {
                             }
 
                             String res = App.client.readLine();
-                            System.out.println("res = " + res);
                             if (!res.startsWith("END")) {
                                 this.playing.setText(" A l'adversaire");
                                 if (res.startsWith("READY")) {
@@ -93,7 +98,6 @@ public class TictactoeController implements Initializable {
                                     } else {
                                         this.player = o;
                                     }
-                                    System.out.println("player = " + this.player);
                                 } else {
                                     if (res.contains("PLAY")) {
                                         this.playing.setText("A vous de jouer");
@@ -105,6 +109,8 @@ public class TictactoeController implements Initializable {
                                 }
                             } else {
                                 this.grid.setDisable(true);
+                                this.listenThread.interrupt();
+                                setGameBoard(res);
                             }
                         }
                     } catch (IOException e) {
@@ -126,13 +132,7 @@ public class TictactoeController implements Initializable {
     }
 
     @FXML
-    void confirm(ActionEvent event) {
-
-    }
-
-    @FXML
     void input(MouseEvent event) {
-        System.out.println("TictactoeController.input");
         var caseSelected = event.getTarget();
 
         if (testInput(caseSelected, "case1")) {
@@ -164,15 +164,11 @@ public class TictactoeController implements Initializable {
             this.updateGameBoard(8);
         }
         this.grid.setDisable(true);
-//        setGameBoard(gameBoard);
-        System.out.println("OK "+gameBoard);
         App.client.println("OK " + gameBoard);
     }
 
     private void updateGameBoard(int index) {
-        System.out.println("gameboard avant " + this.gameBoard);
         this.gameBoard = this.gameBoard.substring(0,index)+this.player.toUpperCase()+this.gameBoard.substring(index+1);
-        System.out.println("Apres = " + this.gameBoard);
     }
 
     private boolean testInput(EventTarget event, String caseTested) {
@@ -193,14 +189,20 @@ public class TictactoeController implements Initializable {
         this.case7.setText("");
         this.case8.setText("");
         this.case9.setText("");
+        this.winning.setVisible(false);
         this.gameBoard = ".........";
         setGameBoard("A A .........");
     }
 
     private void setGameBoard(String board) {
-        this.gameBoard = board.split(" ")[2];
+        if (board.contains("END")) {
+            this.gameBoard = board.split(" ")[3];
+            this.winning.setText("Le gagnant est : " + board.split(" ")[1]);
+            this.winning.setVisible(true);
+        } else {
+            this.gameBoard = board.split(" ")[2];
+        }
         var list = this.gameBoard.split("");
-
 
         for(int i=0; i<9; i++) {
             if (list[i].equals(".")) {
@@ -217,10 +219,5 @@ public class TictactoeController implements Initializable {
         this.case7.setText(list[6].toLowerCase());
         this.case8.setText(list[7].toLowerCase());
         this.case9.setText(list[8].toLowerCase());
-    }
-    
-    private String parseBoard(String board) {
-        System.out.println("TictactoeController.parseBoard");
-        return board;
     }
 }
