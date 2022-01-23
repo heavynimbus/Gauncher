@@ -3,15 +3,11 @@ package gauncher.backend.game.tictactoe;
 
 import gauncher.backend.database.entity.ClientEntity;
 import gauncher.backend.game.Game;
-import gauncher.backend.handler.GameHandler;
+import gauncher.backend.handler.MenuHandler;
 import gauncher.backend.handler.TicTacToeHandler;
 import gauncher.backend.logging.Logger;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Stream;
+import java.util.*;
 
 import static gauncher.backend.game.tictactoe.TicTacToeType.*;
 
@@ -22,6 +18,7 @@ public class TicTacToeGame extends Game {
     private boolean isReady;
     private final TicTacToeType[][] board;
     private TicTacToeType currentPlayer;
+    private final List<TicTacToeHandler> handlers;
 
     public TicTacToeGame() {
         super("tictactoe", 2, TicTacToeHandler.class);
@@ -30,6 +27,7 @@ public class TicTacToeGame extends Game {
         this.board = new TicTacToeType[3][3];
         this.initBoard();
         this.currentPlayer = NONE;
+        this.handlers = new ArrayList<>();
     }
 
     public void setCurrentPlayer() {
@@ -59,16 +57,19 @@ public class TicTacToeGame extends Game {
         return players;
     }
 
-    public TicTacToeType addPlayer(ClientEntity client) {
-        if (this.isReady) return TicTacToeType.NONE;
+    public void addPlayer(ClientEntity client) {
+        if (this.isReady) return;
         if (this.players.containsKey(TicTacToeType.CROSS)) {
             players.put(TicTacToeType.CIRCLE, client);
             isReady = true;
             setCurrentPlayer();
-            return TicTacToeType.CIRCLE;
+            return;
         }
         players.put(CROSS, client);
-        return TicTacToeType.CROSS;
+    }
+
+    public void addHandler(TicTacToeHandler handler) {
+        this.handlers.add(handler);
     }
 
     @Override
@@ -92,12 +93,25 @@ public class TicTacToeGame extends Game {
             }
             setBoard(line);
             var winner = checkEndGame();
-            if (winner != NONE) endGame(players.get(winner));
+            if (winner != NONE) {
+                endGame(players.get(winner));
+                return "END"; //String.format("END", players.get(winner));
+            }
             setCurrentPlayer();
             return String.format("OK Time to %s", currentPlayer);
         } else {
             return "KO Your response have to be like 'OK {board}' or 'WHERE'";
         }
+    }
+
+    @Override
+    public void endGame(ClientEntity winner) {
+        super.endGame(winner);
+        handlers.forEach(handler -> {
+            new MenuHandler(handler.getClientEntity()).start();
+            System.out.println("Interrupt " + handler);
+            handler.interrupt();
+        });
     }
 
     public boolean checkBoard(String board) {
@@ -126,8 +140,8 @@ public class TicTacToeGame extends Game {
         TicTacToeType winLines = checkLines(),
                 winColumns = checkColumns(),
                 winDiags = checkDiagonals();
-        if(winLines != NONE) return winLines;
-        if(winColumns != NONE) return winColumns;
+        if (winLines != NONE) return winLines;
+        if (winColumns != NONE) return winColumns;
         return winDiags;
     }
 

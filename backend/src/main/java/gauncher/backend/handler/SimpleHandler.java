@@ -7,4 +7,8 @@ public abstract class SimpleHandler extends Thread {
     public SimpleHandler(ClientEntity clientEntity) {
         this.clientEntity = clientEntity;
     }
+
+    public ClientEntity getClientEntity() {
+        return clientEntity;
+    }
 }

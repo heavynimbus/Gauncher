@@ -9,7 +9,6 @@ import gauncher.backend.game.tictactoe.TicTacToeType;
 import gauncher.backend.logging.Logger;
 
 import java.sql.SQLException;
-import java.util.Optional;
 
 public class TicTacToeHandler extends GameHandler {
 
@@ -17,22 +16,14 @@ public class TicTacToeHandler extends GameHandler {
     private TicTacToeType playerType;
     private final TicTacToeGame tttGame;
 
+
     public TicTacToeHandler(ClientEntity clientEntity, Game game) {
         super(clientEntity, game);
         this.game.addClient(clientEntity);
         System.out.println("game.getClass() = " + game.getClass());
         this.tttGame = (TicTacToeGame) game;
         tttGame.addPlayer(clientEntity);
-    }
-
-    private Optional<ClientEntity> getOther() {
-        var otherPlayerType = tttGame.getPlayers().keySet().stream()
-                .filter(key -> tttGame.getPlayers().get(key).equals(clientEntity))
-                .findAny().orElse(TicTacToeType.NONE);
-        if (otherPlayerType == TicTacToeType.NONE) {
-            return Optional.empty();
-        }
-        return Optional.of(tttGame.getPlayers().get(otherPlayerType));
+        tttGame.addHandler(this);
     }
 
     private void initPlayerType() {
@@ -90,6 +81,11 @@ public class TicTacToeHandler extends GameHandler {
                 if (res.startsWith("OK ")) {
                     log.info("Send to %s: %s", tttGame.getPlayers().get(tttGame.getCurrentPlayerType()), String.format("%s PLAY %s", tttGame.getCurrentPlayerType(), tttGame));
                     tttGame.getPlayers().get(tttGame.getCurrentPlayerType()).println(String.format("%s PLAY %s", tttGame.getCurrentPlayerType(), tttGame));
+                } else if (res.startsWith("END")) {
+                    //tttGame.broadcast(res);
+                    //new MenuHandler(clientEntity).start();
+                    //this.interrupt();
+                    return;
                 }
                 clientEntity.println(res);
             } else {
