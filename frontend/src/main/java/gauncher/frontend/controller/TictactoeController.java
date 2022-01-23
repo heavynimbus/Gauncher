@@ -61,35 +61,50 @@ public class TictactoeController implements Initializable {
     private GridPane grid;
 
     @FXML
-    private Label playing;
+    private Text playing;
 
     @FXML
     private Label seconde;
 
     private Thread listenThread;
+    private int isPlaying;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         this.initGame();
-        setGameBoard("");
-        System.out.println("test2");
+        System.out.println("Avant Thread");
         this.listenThread = new Thread(
                 () -> {
                     try {
-                        System.out.println("test");
                         while (App.isShowing()) {
-                            System.out.println("ici");
+                            var list = this.gameBoard.split("");
+
+                            for (int i = 0; i < this.gameBoard.length(); i++) {
+                                this.grid.getChildren().get(i).setDisable(list[i].equals("O") || list[i].equals("X"));
+                            }
+
                             String res = App.client.readLine();
                             System.out.println("res = " + res);
-                            if (res.startsWith("READY")) {
-                                if (res.contains("CROSS")) {
-                                    this.player = x;
+                            if (!res.startsWith("END")) {
+                                this.playing.setText(" A l'adversaire");
+                                if (res.startsWith("READY")) {
+                                    if (res.contains("CROSS")) {
+                                        this.player = x;
+                                    } else {
+                                        this.player = o;
+                                    }
+                                    System.out.println("player = " + this.player);
                                 } else {
-                                    this.player = o;
+                                    if (res.contains("PLAY")) {
+                                        this.playing.setText("A vous de jouer");
+                                        setGameBoard(res);
+                                        this.grid.setDisable(false);
+                                    } else {
+                                        this.grid.setDisable(true);
+                                    }
                                 }
-                                log.info(App.client.getPseudo().toString() + ": est pret");
                             } else {
-                                this.grid.setDisable(!res.contains("PLAY"));
+                                this.grid.setDisable(true);
                             }
                         }
                     } catch (IOException e) {
@@ -102,6 +117,14 @@ public class TictactoeController implements Initializable {
         this.listenThread.start();
     }
 
+    private void test() {
+        var list = this.gameBoard.split("");
+
+        for (int i = 0; i < this.gameBoard.length(); i++) {
+            this.grid.getChildren().get(i).setDisable(list[i].equals("O") || list[i].equals("X"));
+        }
+    }
+
     @FXML
     void confirm(ActionEvent event) {
 
@@ -109,28 +132,47 @@ public class TictactoeController implements Initializable {
 
     @FXML
     void input(MouseEvent event) {
+        System.out.println("TictactoeController.input");
         var caseSelected = event.getTarget();
+
         if (testInput(caseSelected, "case1")) {
             this.case1.setText(player);
-            this.playing.setText("Au joueur adverse de jouer");
+            this.updateGameBoard(0);
         } else if (testInput(caseSelected, "case2")) {
             this.case2.setText(player);
+            this.updateGameBoard(1);
         } else if (testInput(caseSelected, "case3")) {
             this.case3.setText(player);
+            this.updateGameBoard(2);
         } else if (testInput(caseSelected, "case4")) {
             this.case4.setText(player);
+            this.updateGameBoard(3);
         } else if (testInput(caseSelected, "case5")) {
             this.case5.setText(player);
+            this.updateGameBoard(4);
         } else if (testInput(caseSelected, "case6")) {
             this.case6.setText(player);
+            this.updateGameBoard(5);
         } else if (testInput(caseSelected, "case7")) {
             this.case7.setText(player);
+            this.updateGameBoard(6);
         } else if (testInput(caseSelected, "case8")) {
             this.case8.setText(player);
+            this.updateGameBoard(7);
         } else if (testInput(caseSelected, "case9")) {
             this.case9.setText(player);
+            this.updateGameBoard(8);
         }
-        setGameBoard(gameBoard);
+        this.grid.setDisable(true);
+//        setGameBoard(gameBoard);
+        System.out.println("OK "+gameBoard);
+        App.client.println("OK " + gameBoard);
+    }
+
+    private void updateGameBoard(int index) {
+        System.out.println("gameboard avant " + this.gameBoard);
+        this.gameBoard = this.gameBoard.substring(0,index)+this.player.toUpperCase()+this.gameBoard.substring(index+1);
+        System.out.println("Apres = " + this.gameBoard);
     }
 
     private boolean testInput(EventTarget event, String caseTested) {
@@ -138,7 +180,10 @@ public class TictactoeController implements Initializable {
     }
 
     private void initGame() {
+        this.grid.setDisable(true);
+        this.seconde.setVisible(false);
         this.player = x;
+        this.playing.setText("");
         this.case1.setText("");
         this.case2.setText("");
         this.case3.setText("");
@@ -149,25 +194,33 @@ public class TictactoeController implements Initializable {
         this.case8.setText("");
         this.case9.setText("");
         this.gameBoard = ".........";
+        setGameBoard("A A .........");
     }
 
     private void setGameBoard(String board) {
-        board = ".OX.XX.OO";
-        var list = board.split("");
+        this.gameBoard = board.split(" ")[2];
+        var list = this.gameBoard.split("");
+
+
         for(int i=0; i<9; i++) {
             if (list[i].equals(".")) {
                 list[i] = "";
             }
         }
 
-        this.case1.setText(list[0]);
-        this.case2.setText(list[1]);
-        this.case3.setText(list[2]);
-        this.case4.setText(list[3]);
-        this.case5.setText(list[4]);
-        this.case6.setText(list[5]);
-        this.case7.setText(list[6]);
-        this.case8.setText(list[7]);
-        this.case9.setText(list[8]);
+        this.case1.setText(list[0].toLowerCase());
+        this.case2.setText(list[1].toLowerCase());
+        this.case3.setText(list[2].toLowerCase());
+        this.case4.setText(list[3].toLowerCase());
+        this.case5.setText(list[4].toLowerCase());
+        this.case6.setText(list[5].toLowerCase());
+        this.case7.setText(list[6].toLowerCase());
+        this.case8.setText(list[7].toLowerCase());
+        this.case9.setText(list[8].toLowerCase());
+    }
+    
+    private String parseBoard(String board) {
+        System.out.println("TictactoeController.parseBoard");
+        return board;
     }
 }
