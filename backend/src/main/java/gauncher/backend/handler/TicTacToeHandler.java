@@ -15,11 +15,12 @@ public class TicTacToeHandler extends GameHandler {
 
     private final static Logger log = new Logger("TicTacToeHandler");
     private TicTacToeType playerType;
-    private TicTacToeGame tttGame;
+    private final TicTacToeGame tttGame;
 
     public TicTacToeHandler(ClientEntity clientEntity, Game game) {
         super(clientEntity, game);
         this.game.addClient(clientEntity);
+        System.out.println("game.getClass() = " + game.getClass());
         this.tttGame = (TicTacToeGame) game;
         tttGame.addPlayer(clientEntity);
     }
@@ -34,16 +35,22 @@ public class TicTacToeHandler extends GameHandler {
         return Optional.of(tttGame.getPlayers().get(otherPlayerType));
     }
 
+    private void initPlayerType() {
+        playerType = tttGame.getPlayers()
+                .keySet().stream()
+                .filter(key -> tttGame.getPlayers().get(key).equals(clientEntity))
+                .findAny()
+                .orElse(TicTacToeType.CROSS);
+
+    }
+
     @Override
     public void run() {
+        initPlayerType();
         if (game.isFull()) {
-            tttGame.getPlayers().keySet().forEach(type ->
-                    tttGame.getPlayers().get(type).println("READY %s", type)
-            );
-            var optionalTicTacToeType = tttGame.getPlayers().keySet().stream()
-                    .filter(key -> tttGame.getPlayers().get(key).equals(clientEntity))
-                    .findAny();
-            this.playerType = optionalTicTacToeType.orElseThrow();
+            tttGame.getPlayers().keySet().forEach(type -> {
+                tttGame.getPlayers().get(type).println("READY %s", type);
+            });
             this.clientEntity.println("%s PLAY %s", playerType, tttGame);
         }
         while (!game.isEnded()) {
@@ -77,12 +84,17 @@ public class TicTacToeHandler extends GameHandler {
             clientEntity.println("KO Still waiting players %s/%s", game.getClients().size(), game.getLimit());
             log.error("Still waiting players, %s/%s", game.getClients().size(), game.getLimit());
         } else {
-            if(tttGame.getCurrentPlayerType().equals(playerType)){
+            if (tttGame.getCurrentPlayerType().equals(playerType)) {
+                log.info(String.format("%s play tictactoe", clientEntity));
                 var res = tttGame.play(line);
+                if (res.startsWith("OK ")) {
+                    log.info("Send to %s: %s", tttGame.getPlayers().get(tttGame.getCurrentPlayerType()), String.format("%s PLAY %s", tttGame.getCurrentPlayerType(), tttGame));
+                    tttGame.getPlayers().get(tttGame.getCurrentPlayerType()).println(String.format("%s PLAY %s", tttGame.getCurrentPlayerType(), tttGame));
+                }
                 clientEntity.println(res);
-            }else{
-                clientEntity.println("KO %s is playing");
-                log.error("%s want to play but it's the turn of the %s");
+            } else {
+                clientEntity.println(String.format("KO %s is playing", tttGame.getCurrentPlayerType()));
+                log.error(String.format("%s want to play but it's the turn of the %s", playerType, tttGame.getCurrentPlayerType()));
             }
         }
     }

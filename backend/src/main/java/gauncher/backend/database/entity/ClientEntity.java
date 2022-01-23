@@ -1,7 +1,6 @@
 package gauncher.backend.database.entity;
 
 
-import gauncher.backend.database.repository.ConnectionRepository;
 import gauncher.backend.exception.DisconnectException;
 import gauncher.backend.logging.Logger;
 import gauncher.backend.service.PasswordService;

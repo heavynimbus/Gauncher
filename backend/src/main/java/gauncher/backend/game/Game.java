@@ -22,12 +22,22 @@ public class Game {
     protected final Class<? extends GameHandler> handler;
 
     public Game(String name, int limit, Class<? extends GameHandler> handler) {
-        this.id = gameIdCount++;
+        this(gameIdCount++, name, limit, new ArrayList<>(), true, false, handler);
+    }
+
+    protected Game(int id,
+                   String name,
+                   int limit,
+                   List<ClientEntity> clients,
+                   boolean isOpen,
+                   boolean isEnded,
+                   Class<? extends GameHandler> handler) {
+        this.id = id;
         this.name = name;
         this.limit = limit;
-        this.clients = new ArrayList<>();
-        this.isOpen = true;
-        this.isEnded = false;
+        this.clients = clients;
+        this.isOpen = isOpen;
+        this.isEnded = isEnded;
         this.handler = handler;
     }
 
@@ -40,7 +50,7 @@ public class Game {
         return id;
     }
 
-    public boolean isFull(){
+    public boolean isFull() {
         return limit >= 0 && clients.size() >= limit;
     }
 
@@ -97,11 +107,12 @@ public class Game {
         return new Game(name, limit, handler);
     }
 
-    public void endGame(ClientEntity winner){
+    public void endGame(ClientEntity winner) {
+        System.out.println("Game.endGame");
         String message;
-        try{
+        try {
             message = String.format("END %s won", winner.getUsername());
-        }catch (NullPointerException e){
+        } catch (NullPointerException e) {
             message = "END nobody won";
         }
         broadcast(message);
@@ -116,5 +127,9 @@ public class Game {
         this.clientStream()
                 .map(ClientEntity::getPrinter)
                 .forEach(printWriter -> printWriter.println(message));
+    }
+
+    public Class<? extends GameHandler> getHandler() {
+        return handler;
     }
 }
