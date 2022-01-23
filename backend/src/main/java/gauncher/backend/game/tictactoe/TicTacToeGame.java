@@ -1,7 +1,5 @@
 package gauncher.backend.game.tictactoe;
 
-import static gauncher.backend.game.tictactoe.TicTacToeType.CROSS;
-
 
 import gauncher.backend.database.entity.ClientEntity;
 import gauncher.backend.game.Game;
@@ -10,11 +8,14 @@ import gauncher.backend.handler.TicTacToeHandler;
 import java.util.HashMap;
 import java.util.Map;
 
+import static gauncher.backend.game.tictactoe.TicTacToeType.*;
+
 
 public class TicTacToeGame extends Game {
     private final Map<TicTacToeType, ClientEntity> players;
     private boolean isReady;
     private final TicTacToeType[][] board;
+    private TicTacToeType currentPlayer;
 
     public TicTacToeGame() {
         super("tictactoe", 2, TicTacToeHandler.class);
@@ -22,6 +23,22 @@ public class TicTacToeGame extends Game {
         this.isReady = false;
         this.board = new TicTacToeType[3][3];
         this.initBoard();
+        this.currentPlayer = NONE;
+    }
+
+    public void setCurrentPlayer() {
+        switch (currentPlayer) {
+            case CIRCLE:
+                currentPlayer = CROSS;
+                break;
+            case CROSS:
+            case NONE:
+                currentPlayer = CIRCLE;
+        }
+    }
+
+    public TicTacToeType getCurrentPlayerType() {
+        return currentPlayer;
     }
 
     private void initBoard() {
@@ -41,6 +58,7 @@ public class TicTacToeGame extends Game {
         if (this.players.containsKey(TicTacToeType.CROSS)) {
             players.put(TicTacToeType.CIRCLE, client);
             isReady = true;
+            setCurrentPlayer();
             return TicTacToeType.CIRCLE;
         }
         players.put(CROSS, client);
@@ -56,5 +74,15 @@ public class TicTacToeGame extends Game {
             }
         }
         return res.toString();
+    }
+
+
+    public String play(String line) {
+        if (line.startsWith("OK")) {
+            setCurrentPlayer();
+            return null;
+        } else {
+            return "KO Your response have to be like 'OK {board}'";
+        }
     }
 }

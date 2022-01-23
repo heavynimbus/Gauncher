@@ -66,7 +66,6 @@ public class TicTacToeHandler extends GameHandler {
                         game.endGame(client);
                     });
                 }
-
                 break;
             }
         }
@@ -75,11 +74,16 @@ public class TicTacToeHandler extends GameHandler {
     private void handleLine(String line) {
         log.debug("Received from %s: %s", clientEntity, line);
         if (game.isOpen()) {
-            clientEntity.println("KO Still waiting players");
+            clientEntity.println("KO Still waiting players %s/%s", game.getClients().size(), game.getLimit());
             log.error("Still waiting players, %s/%s", game.getClients().size(), game.getLimit());
         } else {
-
-            game.broadcast(line);
+            if(tttGame.getCurrentPlayerType().equals(playerType)){
+                var res = tttGame.play(line);
+                clientEntity.println(res);
+            }else{
+                clientEntity.println("KO %s is playing");
+                log.error("%s want to play but it's the turn of the %s");
+            }
         }
     }
 }
