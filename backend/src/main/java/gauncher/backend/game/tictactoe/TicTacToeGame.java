@@ -106,7 +106,17 @@ public class TicTacToeGame extends Game {
 
     @Override
     public void endGame(ClientEntity winner) {
-        super.endGame(winner);
+        String message;
+        try {
+            message = String.format("END %s won %s", winner.getUsername(), this);
+        } catch (NullPointerException e) {
+            message = "END nobody won";
+        }
+        broadcast(message);
+        isEnded = true;
+        clientStream()
+                .filter(Objects::nonNull)
+                .forEach(client -> new MenuHandler(client).start());
         handlers.forEach(handler -> {
             new MenuHandler(handler.getClientEntity()).start();
             System.out.println("Interrupt " + handler);

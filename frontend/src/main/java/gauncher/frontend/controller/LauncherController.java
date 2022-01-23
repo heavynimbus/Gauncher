@@ -7,6 +7,7 @@ import gauncher.frontend.exception.UnprocessableViewException;
 import gauncher.frontend.logging.Logger;
 import gauncher.frontend.view.ChatView;
 import gauncher.frontend.view.ConnectionView;
+import gauncher.frontend.view.TictactoeView;
 import gauncher.frontend.view.WorkInprogressView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -126,20 +127,20 @@ public class LauncherController implements Initializable {
 
     @FXML
     void openTicTacToe(MouseEvent event) throws UnprocessableViewException {
-//        App.client.println("PLAY tictactoe");
-//        try {
-//            var response = App.client.readLine();
-//            if (response.startsWith("OK")) {
-//                log.info(format("%s start to play tictactoe", App.client.getPseudo()));
-//                App.setCurrentScene(new WorkInprogressView());
-//            }
-//        } catch (SocketException e) {
-//            log.error("Client have been disconnected from the server");
-//            App.setCurrentScene(new ConnectionView());
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-        App.setCurrentScene(new WorkInprogressView());
+        App.client.println("PLAY tictactoe");
+        try {
+            var response = App.client.readLine();
+            if (response.startsWith("OK")) {
+                log.info(format("%s start to play tictactoe", App.client.getPseudo()));
+                App.setCurrentScene(new TictactoeView());
+            }
+        } catch (SocketException e) {
+            log.error("Client have been disconnected from the server");
+            App.setCurrentScene(new ConnectionView());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        App.setCurrentScene(new TictactoeView());
     }
 
     @FXML
