@@ -13,15 +13,12 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class TictactoeController implements Initializable {
 
-    private String x = "x";
-    private String o = "o";
+    private final String x = "x";
+    private final String o = "o";
     private String player;
     private Integer lastIdx;
     private Boolean testBlocked;
@@ -87,7 +84,7 @@ public class TictactoeController implements Initializable {
                         while (App.isShowing()) {
                             var list = this.gameBoard.split("");
                             for (int i = 0; i < this.gameBoard.length(); i++) {
-                                if(Arrays.stream(list).filter(this.player::equalsIgnoreCase).count() == 3) {
+                                if (Arrays.stream(list).filter(this.player::equalsIgnoreCase).count() == 3) {
                                     this.grid.getChildren().get(i).setDisable(!list[i].equals(this.player.toUpperCase()));
                                     this.modeInput = true;
                                 } else {
@@ -129,15 +126,15 @@ public class TictactoeController implements Initializable {
         this.listenThread.start();
     }
 
-    private void testInputValue(Text c,int idx){
+    private void testInputValue(Text c, int idx) {
         if (!modeInput) {
             c.setText(player);
             this.updateGameBoard(idx);
-        }  else {
+        } else {
             if (!this.firstInput) {
                 if (!this.testBlocked) {
                     this.updateGameBoard(idx, ".");
-                    setGameBoard("OK OK "+this.gameBoard);
+                    setGameBoard("OK OK " + this.gameBoard);
                     lastIdx = idx;
                     setPlayable(lastIdx);
                     this.firstInput = true;
@@ -159,35 +156,36 @@ public class TictactoeController implements Initializable {
      * @param next
      * @return
      */
-    private boolean checkIfCanPlay(Integer next){
+    private boolean checkIfCanPlay(Integer next) {
         return this.listPlayable.contains(next);
     }
 
     /**
      * Fonction appelé lors d'un clic sur une case
+     *
      * @param event
      */
     @FXML
     void input(MouseEvent event) {
         var caseSelected = event.getTarget();
         if (testInput(caseSelected, "case1")) {
-            testInputValue(this.case1,0);
+            testInputValue(this.case1, 0);
         } else if (testInput(caseSelected, "case2")) {
-            testInputValue(this.case2,1);
+            testInputValue(this.case2, 1);
         } else if (testInput(caseSelected, "case3")) {
-            testInputValue(this.case3,2);
+            testInputValue(this.case3, 2);
         } else if (testInput(caseSelected, "case4")) {
-            testInputValue(this.case4,3);
+            testInputValue(this.case4, 3);
         } else if (testInput(caseSelected, "case5")) {
-            testInputValue(this.case5,4);
+            testInputValue(this.case5, 4);
         } else if (testInput(caseSelected, "case6")) {
-            testInputValue(this.case6,5);
+            testInputValue(this.case6, 5);
         } else if (testInput(caseSelected, "case7")) {
-            testInputValue(this.case7,6);
+            testInputValue(this.case7, 6);
         } else if (testInput(caseSelected, "case8")) {
-            testInputValue(this.case8,7);
+            testInputValue(this.case8, 7);
         } else if (testInput(caseSelected, "case9")) {
-            testInputValue(this.case9,8);
+            testInputValue(this.case9, 8);
         }
         if (!this.modeInput) {
             this.grid.setDisable(true);
@@ -202,11 +200,12 @@ public class TictactoeController implements Initializable {
 
     /**
      * Update le board
+     *
      * @param index
      * @param replace
      */
     private void updateGameBoard(int index, String replace) {
-        this.gameBoard = this.gameBoard.substring(0,index)+replace+this.gameBoard.substring(index+1);
+        this.gameBoard = this.gameBoard.substring(0, index) + replace + this.gameBoard.substring(index + 1);
     }
 
     private void updateGameBoard(int index) {
@@ -215,6 +214,7 @@ public class TictactoeController implements Initializable {
 
     /**
      * Permet de savoir ou l'utilisateur clique
+     *
      * @param event
      * @param caseTested
      * @return
@@ -251,6 +251,7 @@ public class TictactoeController implements Initializable {
 
     /**
      * Print le board
+     *
      * @param board
      */
     private void setGameBoard(String board) {
@@ -263,12 +264,11 @@ public class TictactoeController implements Initializable {
         }
         var list = this.gameBoard.split("");
 
-        for(int i=0; i<9; i++) {
+        for (int i = 0; i < 9; i++) {
             if (list[i].equals(".")) {
                 list[i] = "";
             }
         }
-
         this.case1.setText(list[0].toLowerCase());
         this.case2.setText(list[1].toLowerCase());
         this.case3.setText(list[2].toLowerCase());
@@ -284,102 +284,43 @@ public class TictactoeController implements Initializable {
 
     /**
      * Permet de controller si l'utilisateur à le droit de déplacer sa piece sur le 2e clic
+     *
      * @param index
      */
     private void setPlayable(Integer index) {
-        for (int i = 0; i<9; i++) {
+        for (int i = 0; i < 9; i++) {
             this.grid.getChildren().get(i).setDisable(true);
         }
-        if (index == 0) {
-            List.of(1, 3, 4).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    System.out.println("ici");
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                }else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 1 ){
-            List.of(-1, +1, +2, +3, +4).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                }else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 2) {
-            List.of(-1, 2, 3).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                }else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 3) {
-            List.of(-3, -2, 1, 3, 4).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                }else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 4) {
-            List.of(-4, -3, -2, -1, 1, 2, 3, 4).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                }else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 5) {
-            // -1 -4 -3 +2 +3
-            List.of(-1, -4, -3, 2, 3).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                }else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 6) {
-            // -3 -2 +1
-            List.of(-3, -2, 1).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                }else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 7) {
-            // -4 -3 -2 -1 +1
-            List.of(-4, -3, -2, -1, 1).forEach(elt->{
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                } else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        } else if (index == 8) {
-            //-1 -3 -4
-            List.of(-1, -3, -4).forEach(elt -> {
-                if (!this.gameBoard.split("")[index + elt].equals("O") || !this.gameBoard.split("")[index + elt].equals("X")) {
-                    this.grid.getChildren().get(index + elt).setDisable(false);
-                    this.listPlayable.add(index + elt);
-                } else {
-                    this.grid.getChildren().get(index + elt).setDisable(true);
-                }
-            });
-        }
+
+        Map<Integer, List<Integer>> cellRelationShips = Map.of(
+                0, List.of(1, 3, 4),
+                1, List.of(-1, +1, +2, +3, +4),
+                2, List.of(-1, 2, 3),
+                3, List.of(-3, -2, 1, 3, 4),
+                4, List.of(-4, -3, -2, -1, 1, 2, 3, 4),
+                5, List.of(-1, -4, -3, 2, 3),
+                6, List.of(-3, -2, 1),
+                7, List.of(-4, -3, -2, -1, 1),
+                8, List.of(-1, -3, -4)
+        );
+        var splitedBoard = gameBoard.split("");
+        cellRelationShips.keySet().stream()
+                .filter(index::equals)
+                .forEach(key -> {
+                    var neighbours = cellRelationShips.get(key);
+                    neighbours.forEach((neighbourIndex) -> {
+                        if ( !splitedBoard[index + neighbourIndex].equalsIgnoreCase(o) &&
+                                !splitedBoard[index + neighbourIndex].equalsIgnoreCase(x)) {
+                            this.grid.getChildren().get(index + neighbourIndex).setDisable(false);
+                            this.listPlayable.add(index + neighbourIndex);
+                        } else {
+                            this.grid.getChildren().get(index + neighbourIndex).setDisable(true);
+                        }
+                    });
+                });
 
         boolean test = this.grid.getChildren().stream().allMatch(Node::isDisable);
-        this.grid.getChildren().stream().map(elt ->elt.getId() +  " " + elt.isDisable()).forEach(System.out::println);
+        this.grid.getChildren().stream().map(elt -> elt.getId() + " " + elt.isDisable()).forEach(System.out::println);
         System.out.println("grid " + this.grid.isDisable());
         if (test) {
             System.out.println("test = " + test);

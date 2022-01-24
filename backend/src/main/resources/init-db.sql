@@ -28,25 +28,25 @@ CREATE TABLE connection
     FOREIGN KEY (client_id) REFERENCES client (id)
 );
 
-CREATE TABLE game
-(
-    id         serial primary key,
-    created_at timestamp default now(),
-    updated_at timestamp default now(),
-    name       varchar(20)
-);
+--CREATE TABLE game
+--(
+--    id         serial primary key,
+--    created_at timestamp default now(),
+--    updated_at timestamp default now(),
+--    name       varchar(20)
+--);
 
-INSERT INTO game(name)
-VALUES ('chat'),
-       ('tictactoe');
+--INSERT INTO game(name)
+--VALUES ('chat'),
+--       ('tictactoe');
 
-CREATE TABLE players_games
-(
-    client_id integer not null,
-    game_id   integer not null,
-    FOREIGN KEY (client_id) REFERENCES client (id),
-    FOREIGN KEY (game_id) REFERENCES game (id)
-);
+--CREATE TABLE players_games
+--(
+--    client_id integer not null,
+--    game_id   integer not null,
+--    FOREIGN KEY (client_id) REFERENCES client (id),
+--    FOREIGN KEY (game_id) REFERENCES game (id)
+--);
 
 --CREATE TABLE chat_messages
 --(
