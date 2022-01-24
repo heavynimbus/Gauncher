@@ -97,6 +97,7 @@ public class TicTacToeGame extends Game {
                 endGame(players.get(winner));
                 return "END"; //String.format("END", players.get(winner));
             }
+            Arrays.stream(board).anyMatch("."::equals);
             setCurrentPlayer();
             return String.format("OK Time to %s", currentPlayer);
         } else {
@@ -110,7 +111,7 @@ public class TicTacToeGame extends Game {
         try {
             message = String.format("END %s won %s", winner.getUsername(), this);
         } catch (NullPointerException e) {
-            message = "END nobody won";
+            message = String.format("END Nobody won %s", this);
         }
         broadcast(message);
         isEnded = true;

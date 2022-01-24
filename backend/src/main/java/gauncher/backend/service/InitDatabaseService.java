@@ -17,10 +17,10 @@ import java.util.stream.Collectors;
 public class InitDatabaseService extends DatabaseConnection {
     private final static Logger log = new Logger("InitDatabaseService");
     private final static ClientRepository clientRepository = new ClientRepository();
-
+    private final static String INIT_DB_SQL = "/init-db.sql";
     public void init() throws Exception {
         log.info("Starting database initialization");
-        var resource = this.getClass().getResource("/init-db.sql");
+        var resource = this.getClass().getResource(INIT_DB_SQL);
         Statement statement = this.connection.createStatement();
         assert resource != null;
         Arrays.stream(Files.lines(Path.of(resource.toURI()))

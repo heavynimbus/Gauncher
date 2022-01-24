@@ -1,11 +1,11 @@
+DROP TABLE IF EXISTS players_games;
+DROP SEQUENCE IF EXISTS players_games_id_seq;
+DROP TABLE IF EXISTS game;
+DROP SEQUENCE IF EXISTS game_id_seq;
 DROP TABLE IF EXISTS connection;
 DROP SEQUENCE IF EXISTS connection_id_seq;
 DROP TABLE IF EXISTS client;
 DROP SEQUENCE IF EXISTS client_id_seq;
-DROP TABLE IF EXISTS game;
-DROP SEQUENCE IF EXISTS game_id_seq;
-DROP TABLE IF EXISTS players_games;
-DROP SEQUENCE IF EXISTS players_games_id_seq;
 
 CREATE TABLE client
 (
