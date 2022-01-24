@@ -61,6 +61,10 @@ public class LoginController implements Initializable {
         App.setCurrentScene(new SignInView());
     }
 
+    /**
+     * Check connexion and login to Laucher
+     * @throws UnprocessableViewException
+     */
     @FXML
     public void login() throws UnprocessableViewException {
 
@@ -91,7 +95,11 @@ public class LoginController implements Initializable {
         }
     }
 
-
+    /**
+     * Login enter
+     * @param event
+     * @throws UnprocessableViewException
+     */
     @FXML
     void inputValueUser(KeyEvent event) throws UnprocessableViewException {
         var code = event.getCode();
