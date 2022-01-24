@@ -4,6 +4,7 @@ import gauncher.frontend.client.Client;
 import gauncher.frontend.exception.UnprocessableViewException;
 import gauncher.frontend.logging.Logger;
 import gauncher.frontend.view.ConnectionView;
+import gauncher.frontend.view.LauncherView;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -21,6 +22,14 @@ public class App extends Application {
     currentStage.setScene(scene);
   }
 
+  public static void setCurrentStage(Stage stage) {
+    App.currentStage = stage;
+  }
+
+  public static Stage getCurrentStage() {
+    return App.currentStage;
+  }
+
   public static void setOnCloseRequest(EventHandler<WindowEvent> handler){
     currentStage.setOnCloseRequest(handler);
   }
@@ -34,6 +43,9 @@ public class App extends Application {
     try {
       setCurrentScene(new ConnectionView());
       stage.show();
+//      var s = new Stage();
+//      s.setScene(new ConnectionView());
+//      s.show();
     } catch (UnprocessableViewException e) {
       e.printStackTrace();
     }

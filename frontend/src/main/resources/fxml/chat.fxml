@@ -61,16 +61,6 @@
         </HBox>
         <ListView fx:id="userList" focusTraversable="false" maxHeight="1.7976931348623157E308" prefHeight="495.0" prefWidth="217.0" style="-fx-border-image-width: 0; -fx-background-color: #014f86;">
         </ListView>
-            <Pane prefHeight="200.0" prefWidth="200.0">
-               <children>
-                  <ImageView fitHeight="64.0" fitWidth="73.0" layoutX="77.0" layoutY="16.0" onMouseClicked="#previousView" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="/img/logoLogout.png" />
-                     </image>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></ImageView>
-               </children></Pane>
       </children>
     </VBox>
   </left>
