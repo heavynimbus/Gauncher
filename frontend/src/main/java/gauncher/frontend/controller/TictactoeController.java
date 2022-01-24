@@ -14,6 +14,7 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.stream.Stream;
 
 public class TictactoeController implements Initializable {
 
@@ -21,7 +22,6 @@ public class TictactoeController implements Initializable {
     private final String o = "o";
     private String player;
     private Integer lastIdx;
-    private Boolean testBlocked;
 
     public Logger log = new Logger("TicTacToe Controller");
 
@@ -91,7 +91,11 @@ public class TictactoeController implements Initializable {
                                     this.grid.getChildren().get(i).setDisable(list[i].equals("O") || list[i].equals("X"));
                                 }
                             }
-
+                            System.out.println("----- readline -------");
+                            System.out.println("==> board");
+                            System.out.println(gameBoard);
+                            System.out.println("==> nodes");
+                            grid.getChildren().stream().map(Node::isDisable).forEach(System.out::println);
                             String res = App.client.readLine();
                             if (!res.startsWith("END")) {
                                 this.playing.setText(" A l'adversaire");
@@ -131,21 +135,20 @@ public class TictactoeController implements Initializable {
             c.setText(player);
             this.updateGameBoard(idx);
         } else {
+            System.out.println("firstInput = " + firstInput);
+
             if (!this.firstInput) {
-                if (!this.testBlocked) {
-                    this.updateGameBoard(idx, ".");
-                    setGameBoard("OK OK " + this.gameBoard);
-                    lastIdx = idx;
-                    setPlayable(lastIdx);
-                    this.firstInput = true;
-                } else {
-                    this.firstInput = false;
+                lastIdx = idx;
+                setPlayable(lastIdx);
+                if (firstInput) {
+                    updateGameBoard(idx, ".");
                 }
             } else {
+                System.out.println("Before check if can play");
                 if (checkIfCanPlay(idx)) {
                     this.updateGameBoard(idx);
                     setGameBoard("OK OK " + this.gameBoard);
-                    this.modeInput = false;
+                    App.client.println("OK " + gameBoard);
                     this.firstInput = false;
                 }
             }
@@ -191,9 +194,11 @@ public class TictactoeController implements Initializable {
             this.grid.setDisable(true);
             App.client.println("OK " + gameBoard);
         } else {
-            for (int i = 0; i < this.gameBoard.length(); i++) {
+            /*for (int i = 0; i < this.gameBoard.length(); i++) {
                 this.grid.getChildren().get(i).setDisable(!this.gameBoard.split("")[i].equals("."));
-            }
+            }*/
+            System.out.println("fin input --> else");
+            grid.getChildren().stream().map(Node::isDisable).forEach(System.out::println);
         }
 
     }
@@ -244,7 +249,6 @@ public class TictactoeController implements Initializable {
         this.modeInput = false;
         this.winning.setVisible(false);
         this.listPlayable = new ArrayList<>();
-        this.testBlocked = false;
         this.gameBoard = ".........";
         setGameBoard("A A .........");
     }
@@ -278,8 +282,6 @@ public class TictactoeController implements Initializable {
         this.case7.setText(list[6].toLowerCase());
         this.case8.setText(list[7].toLowerCase());
         this.case9.setText(list[8].toLowerCase());
-
-        this.listPlayable = new ArrayList<>();
     }
 
     /**
@@ -309,7 +311,7 @@ public class TictactoeController implements Initializable {
                 .forEach(key -> {
                     var neighbours = cellRelationShips.get(key);
                     neighbours.forEach((neighbourIndex) -> {
-                        if ( !splitedBoard[index + neighbourIndex].equalsIgnoreCase(o) &&
+                        if (!splitedBoard[index + neighbourIndex].equalsIgnoreCase(o) &&
                                 !splitedBoard[index + neighbourIndex].equalsIgnoreCase(x)) {
                             this.grid.getChildren().get(index + neighbourIndex).setDisable(false);
                             this.listPlayable.add(index + neighbourIndex);
@@ -322,9 +324,22 @@ public class TictactoeController implements Initializable {
         boolean test = this.grid.getChildren().stream().allMatch(Node::isDisable);
         this.grid.getChildren().stream().map(elt -> elt.getId() + " " + elt.isDisable()).forEach(System.out::println);
         System.out.println("grid " + this.grid.isDisable());
+        System.out.println("test = " + test);
         if (test) {
-            System.out.println("test = " + test);
+            log.info("Reset");
+            Stream.of(case1, case2, case3, case4, case5, case6, case7, case8, case9)
+                    .filter(c -> c.getText().equalsIgnoreCase(player))
+                    .forEach(c -> {
+                        System.out.println("c = " + c);
+                        c.setDisable(false);
+                        //listPlayable.add(Integer.parseInt(c.getId().substring(c.getId().length() - 1)) - 1);
+                    });
+            listPlayable.forEach(System.out::println);
+            firstInput = false;
+        } else {
             updateGameBoard(lastIdx, this.player);
+            System.out.println(" set first input true");
+            firstInput = true;
         }
     }
 }
