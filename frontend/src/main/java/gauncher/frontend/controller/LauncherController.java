@@ -11,56 +11,22 @@ import gauncher.frontend.view.TictactoeView;
 import gauncher.frontend.view.WorkInprogressView;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.HBox;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.SocketException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class LauncherController implements Initializable {
 
     private Logger log = new Logger("LauncherController");
 
-    Class<?> aClass = this.getClass();
-
-    String[] gameList = new String[]{"demineur", "battleQuiz", "reversi", "justePrix", "tictactoe", "chat"};
-
-    @FXML
-    private ImageView buttonBattleQuiz;
-
-    @FXML
-    private ImageView buttonChat;
-
-    @FXML
-    private ImageView buttonDemineur;
-
-    @FXML
-    private ImageView buttonJustePrix;
-
     @FXML
     private ImageView buttonLogout;
-
-    @FXML
-    private ImageView buttonMorpion;
-
-    @FXML
-    private ImageView buttonReversi;
-
-    @FXML
-    private ImageView logoGauncher;
-
-    @FXML
-    private HBox menu;
 
     @FXML
     private Text pseudoLabel;
@@ -83,6 +49,12 @@ public class LauncherController implements Initializable {
     @FXML
     private Text tictactoeCompt;
 
+
+    /**
+     * Initialization
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         var init = "-/-";
@@ -101,6 +73,10 @@ public class LauncherController implements Initializable {
         pseudoLabel.setText(App.client.getPseudo().get());
     }
 
+    /**
+     * Live and log out
+     * @param event
+     */
     @FXML
     void logout(MouseEvent event) {
         App.client.println("quit");
@@ -108,6 +84,11 @@ public class LauncherController implements Initializable {
         stage.close();
     }
 
+    /**
+     * If clic on chat Open it
+     * @param event
+     * @throws UnprocessableViewException
+     */
     @FXML
     void openChat(MouseEvent event) throws UnprocessableViewException {
         App.client.println("PLAY chat");
@@ -125,6 +106,11 @@ public class LauncherController implements Initializable {
         }
     }
 
+    /**
+     * If clic on tictactoe open it
+     * @param event
+     * @throws UnprocessableViewException
+     */
     @FXML
     void openTicTacToe(MouseEvent event) throws UnprocessableViewException {
         App.client.println("PLAY tictactoe");
@@ -142,6 +128,12 @@ public class LauncherController implements Initializable {
         }
 //        App.setCurrentScene(new TictactoeView());
     }
+
+    /**
+     *TODO : GAMES
+     */
+
+
 
     @FXML
     void openReversi(MouseEvent event) throws UnprocessableViewException{
@@ -188,6 +180,10 @@ public class LauncherController implements Initializable {
         }
     }
 
+    /**
+     * Parsing games list received from the server
+     * @param list
+     */
     private void parse(String[] list) {
         for (int i = 0; i < list.length; i++) {
             var index = list[i].indexOf("(");
