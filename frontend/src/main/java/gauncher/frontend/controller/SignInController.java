@@ -61,6 +61,9 @@ public class SignInController implements Initializable {
                 App.client.println(format("SIGN %s %s", pseudoValue, passwordValue));
                 var response = App.client.readLine();
                 if (response.startsWith("OK")) {
+                    App.client.println(format("LOGIN %s %s", pseudoValue, passwordValue));
+                    App.client.readLine();
+                    
                     App.client.setPseudo(pseudoValue);
                     App.setCurrentScene(new LauncherView());
                 }
